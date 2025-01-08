@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mfajarjati - Personal Portfolio</title>
+
+    <!--- favicon-->
+    <link
+      rel="shortcut icon"
+      href="./assets/images/icon.ico"
+      type="image/x-icon"
+    />
+
+    <!--- custom css link-->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!--- google font link-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  </head>
+
+  <body>
+    <!--- #MAIN-->
+
+    <main>
+      <!--- #SIDEBAR-->
+
+      <aside class="sidebar" data-sidebar>
+        <div class="sidebar-info">
+          <figure class="avatar-box">
+            <img
+              src="./assets/images/icon2.png"
+              alt="Richard hanrick"
+              width="80"
+            />
+          </figure>
+
+          <div class="info-content">
+            <h1 class="name" title="Richard hanrick">
+              Muhammad Fajar Jati Permana
+            </h1>
+
+            <p class="title">Software Engineering</p>
+            <!-- <p class="title">Data Science</p> -->
+          </div>
+
+          <button class="info_more-btn" data-sidebar-btn>
+            <span>Show Contacts</span>
+
+            <ion-icon name="chevron-down"></ion-icon>
+          </button>
+        </div>
+
+        <div class="sidebar-info_more">
+          <div class="separator"></div>
+
+          <ul class="contacts-list">
+            <li class="contact-item">
+              <div class="icon-box">
+                <ion-icon name="mail-outline"></ion-icon>
+              </div>
+
+              <div class="contact-info">
+                <p class="contact-title">Email</p>
+
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=muhammad.fajarjati@gmail.com"
+                  target="_blank"
+                  class="contact-link"
+                  >muhammad.fajarjati@gmail.com</a
+                >
+              </div>
+            </li>
+
+            <li class="contact-item">
+              <div class="icon-box">
+                <ion-icon name="phone-portrait-outline"></ion-icon>
+              </div>
+
+              <div class="contact-info">
+                <p class="contact-title">Phone</p>
+
+                <a href="tel:+6283820309936" class="contact-link"
+                  >083820309936</a
+                >
+              </div>
+            </li>
+
+            <li class="contact-item">
+              <div class="icon-box">
+                <ion-icon name="calendar-outline"></ion-icon>
+              </div>
+
+              <div class="contact-info">
+                <p class="contact-title">Birthday</p>
+
+                <time datetime="1982-06-23">13 November 2003</time>
+              </div>
+            </li>
+          </ul>
+
+          <div class="separator"></div>
+
+          <ul class="social-list">
+            <li class="social-item">
+              <a href="https://github.com/mfajarjati" class="social-link">
+                <ion-icon name="logo-github"></ion-icon>
+              </a>
+            </li>
+
+            <li class="social-item">
+              <a
+                href="https://www.linkedin.com/in/mfajarjati"
+                class="social-link"
+              >
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+
+            <li class="social-item">
+              <a href="https://instagram.com/mfajarjati" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <!--- #main-content-->
+
+      <div class="main-content">
+        <!--
+        - #NAVBAR
+      -->
+
+        <nav class="navbar">
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <button class="navbar-link active" data-nav-link>Home</button>
+            </li>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>About</button>
+            </li>
+
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Resume</button>
+            </li>
+
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Project</button>
+            </li>
+
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Contact</button>
+            </li>
+          </ul>
+        </nav>
+
+        <!--- #ABOUT -->
+
+        <article class="home active home-article" data-page="home">
+          <div class="home-background">
+            <h1 class="home-name">Welcome to My Portfolio...!</h1>
+            <p class="home-position"></p>
+          </div>
+        </article>
+
+        <article class="about" data-page="about">
+          <header data-aos="fade-up">
+            <h2 class="h2 article-title">About me</h2>
+          </header>
+
+          <section class="about-text">
+            <p data-aos="fade-right" data-aos-delay="200">
+              Saya adalah seorang mahasiswa aktif jurusan Teknik Komputer dengan
+              minat besar dalam pengembangan perangkat lunak. Saya memiliki
+              ketertarikan yang mendalam pada pemrograman, algoritma, dan desain
+              sistem yang efisien. Melalui studi akademik saya, saya telah
+              memperoleh pemahaman yang kuat tentang konsep dasar dan lanjutan
+              dalam teknik komputer serta berbagai bahasa pemrograman.
+            </p>
+
+            <p data-aos="fade-left" data-aos-delay="400">
+              Selain kuliah, saya juga aktif mengikuti proyek-proyek
+              pengembangan perangkat lunak dan berpartisipasi dalam komunitas
+              teknologi untuk terus meningkatkan keterampilan saya. Saya senang
+              memecahkan masalah kompleks dan selalu berusaha untuk belajar
+              teknologi baru dan praktik terbaik dalam industri pengembangan
+              perangkat lunak. Dengan perpaduan antara pengetahuan akademis dan
+              pengalaman praktis, saya berharap dapat berkontribusi secara
+              signifikan dalam bidang pengembangan perangkat lunak dan terus
+              berkembang sebagai profesional di industri ini.
+            </p>
+          </section>
+
+          <!--
+          - service
+        -->
+
+          <section class="service">
+            <h3 class="h3 service-title">Layanan</h3>
+
+            <ul class="service-list">
+              <!-- Data Science Services -->
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img
+                    src="./assets/images/icon-dev.svg"
+                    alt="data analysis icon"
+                    width="40"
+                  />
+                </div>
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">
+                    Data Analytics & Machine Learning
+                  </h4>
+                  <p class="service-item-text">
+                    Analisis data mendalam, pemodelan prediktif, dan
+                    implementasi solusi machine learning untuk menghasilkan
+                    insights yang actionable.
+                  </p>
+                </div>
+              </li>
+
+              <!-- AI Development -->
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img
+                    src="./assets/images/icon-design.svg"
+                    alt="AI icon"
+                    width="40"
+                  />
+                </div>
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">
+                    Computer Vision & Deep Learning
+                  </h4>
+                  <p class="service-item-text">
+                    Pengembangan model AI untuk computer vision, image
+                    processing, dan implementasi deep learning untuk solusi
+                    bisnis.
+                  </p>
+                </div>
+              </li>
+
+              <!-- Frontend Development -->
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img
+                    src="./assets/images/icon-app.svg"
+                    alt="mobile icon"
+                    width="40"
+                  />
+                </div>
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">Mobile App Development</h4>
+                  <p class="service-item-text">
+                    Pengembangan aplikasi mobile cross-platform menggunakan
+                    Flutter. Implementasi fitur native dan custom Widget
+                    components.
+                  </p>
+                </div>
+              </li>
+
+              <!-- Full Stack Development -->
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img
+                    src="./assets/images/icon-photo.svg"
+                    alt="fullstack icon"
+                    width="40"
+                  />
+                </div>
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">Full Stack Development</h4>
+                  <p class="service-item-text">
+                    Pengembangan aplikasi web end-to-end dengan teknologi
+                    modern, integrasi API, dan database management serta
+                    responsif dan modern dengan implementasi UI/UX yang
+                    user-friendly.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!--
+          - testimonials
+        -->
+
+          <!-- <section class="testimonials">
+            <h3 class="h3 testimonials-title"></h3>
+            Tim Proyek Saya
+            <ul class="testimonials-list has-scrollbar">
+              <li class="testimonials-item">
+                <div class="content-card" data-testimonials-item>
+                  <figure class="testimonials-avatar-box">
+                    <img
+                      src="./assets/images/avatar-1.png"
+                      alt="M. Fajar Jati Permana"
+                      width="100"
+                      data-testimonials-avatar
+                    />
+                  </figure>
+
+                  <h4
+                    class="h4 testimonials-item-title"
+                    data-testimonials-title
+                  >
+                    M. Fajar Jati Permana
+                  </h4>
+
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>Frontend Developer</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="testimonials-item">
+                <div class="content-card" data-testimonials-item>
+                  <figure class="testimonials-avatar-box">
+                    <img
+                      src="./assets/images/avatar-2.png"
+                      alt="Firda Rosela Sundari"
+                      data-testimonials-avatar
+                    />
+                  </figure>
+
+                  <h4
+                    class="h4 testimonials-item-title"
+                    data-testimonials-title
+                  >
+                    Firda Rosela Sundari
+                  </h4>
+
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>UI/UX Desginer</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="testimonials-item">
+                <div class="content-card" data-testimonials-item>
+                  <figure class="testimonials-avatar-box">
+                    <img
+                      src="./assets/images/avatar-3.png"
+                      alt="Wildan Tisna Surya"
+                      data-testimonials-avatar
+                    />
+                  </figure>
+                  <h4
+                    class="h4 testimonials-item-title"
+                    data-testimonials-title
+                  >
+                    Wildan Tisna Surya
+                  </h4>
+
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>Backend Developer</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="testimonials-item">
+                <div class="content-card" data-testimonials-item>
+                  <figure class="testimonials-avatar-box">
+                    <img
+                      src="./assets/images/avatar-4.png"
+                      alt="Najwa Ikhsaniyah"
+                      data-testimonials-avatar
+                    />
+                  </figure>
+
+                  <h4
+                    class="h4 testimonials-item-title"
+                    data-testimonials-title
+                  >
+                    Najwa Ikhsaniyah
+                  </h4>
+
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>UI/UX Desginer</p>
+                  </div>
+                </div>
+              </li>
+              <li class="testimonials-item">
+                <div class="content-card" data-testimonials-item>
+                  <figure class="testimonials-avatar-box">
+                    <img
+                      src="./assets/images/avatar-5.png"
+                      alt="Hammam Abdurrahman"
+                      data-testimonials-avatar
+                    />
+                  </figure>
+
+                  <h4
+                    class="h4 testimonials-item-title"
+                    data-testimonials-title
+                  >
+                    Hammam Abdurrahman
+                  </h4>
+
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>Research Analysis</p>
+                  </div>
+                </div>
+              </li>
+              <li class="testimonials-item">
+                <div class="content-card" data-testimonials-item>
+                  <figure class="testimonials-avatar-box">
+                    <img
+                      src="./assets/images/avatar-6.png"
+                      alt="Destya Aulia Nurul"
+                      data-testimonials-avatar
+                    />
+                  </figure>
+
+                  <h4
+                    class="h4 testimonials-item-title"
+                    data-testimonials-title
+                  >
+                    Destya Aulia Nurul
+                  </h4>
+
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>Research Analysis</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </section> -->
+
+          <!--
+          - testimonials modal
+        -->
+
+          <div class="modal-container" data-modal-container>
+            <div class="overlay" data-overlay></div>
+
+            <section class="testimonials-modal">
+              <button class="modal-close-btn" data-modal-close-btn>
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
+
+              <div class="modal-img-wrapper">
+                <figure class="modal-avatar-box">
+                  <img
+                    src="./assets/images/avatar-1.png"
+                    alt="Daniel lewis"
+                    width="80"
+                    data-modal-img
+                  />
+                </figure>
+
+                <img src="./assets/images/icon-quote.svg" alt="quote icon" />
+              </div>
+
+              <div class="modal-content">
+                <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
+
+                <div data-modal-text>
+                  <p>
+                    Richard was hired to create a corporate identity. We were
+                    very pleased with the work done. She has a lot of experience
+                    and is very concerned about the needs of client. Lorem ipsum
+                    dolor sit amet, ullamcous cididt consectetur adipiscing
+                    elit, seds do et eiusmod tempor incididunt ut laborels
+                    dolore magnarels alia.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!--
+          - clients
+        -->
+
+          <section class="clients">
+            <h3 class="h3 clients-title">Clients</h3>
+
+            <ul class="clients-list has-scrollbar">
+              <li class="clients-item">
+                <a href="https://mtsmimha.mimha.sch.id/">
+                  <img
+                    src="./assets/images/logo-1-color.png"
+                    alt="client logo"
+                  />
+                </a>
+              </li>
+
+              <li class="clients-item">
+                <a href="https://lidm.kemdikbud.go.id/">
+                  <img
+                    src="./assets/images/logo-2-color.png"
+                    alt="client logo"
+                  />
+                </a>
+              </li>
+
+              <li class="clients-item">
+                <a href="https://itrc.itera.ac.id/Beranda">
+                  <img
+                    src="./assets/images/logo-3-color.png"
+                    alt="client logo"
+                  />
+                </a>
+              </li>
+
+              <li class="clients-item">
+                <a href="https://www.upi.edu/">
+                  <img
+                    src="./assets/images/logo-4-color.png"
+                    alt="client logo"
+                  />
+                </a>
+              </li>
+
+              <li class="clients-item">
+                <a href="https://revou.co/">
+                  <img
+                    src="./assets/images/logo-6-color.svg"
+                    alt="client logo"
+                  />
+                </a>
+              </li>
+
+              <li class="clients-item">
+                <a href="https://dibimbing.id/">
+                  <img
+                    src="./assets/images/logo-5-color.png"
+                    alt="client logo"
+                  />
+                </a>
+              </li>
+            </ul>
+          </section>
+        </article>
+
+        <!--- #RESUME-->
+
+        <article class="resume" data-page="resume">
+          <header>
+            <h2 class="h2 article-title">Resume</h2>
+          </header>
+
+          <section class="timeline">
+            <div class="title-wrapper">
+              <div class="icon-box">
+                <ion-icon name="book-outline"></ion-icon>
+              </div>
+
+              <h3 class="h3">Education</h3>
+            </div>
+
+            <ol class="timeline-list">
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">
+                  Universitas Pendidikan Indonesia
+                </h4>
+
+                <span>Teknik Komputer (2022 — Sekarang)</span>
+                <p class="timeline-text">
+                  Fokus pada pengembangan algoritma machine learning dan
+                  analisis data kompleks.
+                </p>
+                <p class="timeline-text">
+                  Penerapan konsep statistik dan matematika dalam pemrosesan
+                  data dan prediksi.
+                </p>
+                <p class="timeline-text">
+                  Pengalaman dengan tools data science seperti Python, Pandas,
+                  NumPy, dan Scikit-learn.
+                </p>
+                <p class="timeline-text">
+                  Penelitian dan implementasi deep learning untuk computer
+                  vision dan NLP.
+                </p>
+                <p class="timeline-text">
+                  Berpengalaman dalam merancang arsitektur sistem yang efisien
+                  dan scalable.
+                </p>
+                <p class="timeline-text">
+                  Pengetahuan mendalam tentang konsep OOP dan penerapannya dalam
+                  pengembangan perangkat lunak.
+                </p>
+                <p class="timeline-text">
+                  Ahli dalam pengujian perangkat lunak untuk memastikan
+                  fungsionalitas dan kinerja optimal.
+                </p>
+                <p class="timeline-text">
+                  Mata Kuliah Relevan: Rekayasa Perangkat Lunak, Pemrograman Web
+                  dan Mobile, Sistem Cerdas dan Automasi, Basis Data, dan
+                  Jaringan Komputer.
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">
+                  SMA Kartika XIX-1 Bandung
+                </h4>
+
+                <span>Matematika dan Ilmu Alam (2019 — 2022)</span>
+
+                <p class="timeline-text">
+                  Kemampuan menganalisis masalah dan menemukan solusi yang
+                  efisien.
+                </p>
+                <p class="timeline-text">
+                  Keterampilan dalam menyelesaikan masalah dengan menggunakan
+                  algoritma dan logika yang kuat.
+                </p>
+                <p class="timeline-text">
+                  Pemahaman dasar tentang konsep statistik yang diterapkan dalam
+                  analisis data.
+                </p>
+                <p class="timeline-text">
+                  Mata Pelajaran Relevan: Matematika, dan Fisika
+                </p>
+              </li>
+            </ol>
+          </section>
+
+          <section class="timeline">
+            <div class="title-wrapper">
+              <div class="icon-box">
+                <ion-icon name="book-outline"></ion-icon>
+              </div>
+
+              <h3 class="h3">Experience</h3>
+            </div>
+
+            <ol class="timeline-list">
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">
+                  Juara 3 Kompetisi AI NOVAC 2024
+                </h4>
+
+                <span>Mobile Developer & AI Engineer (Februari 2024)</span>
+
+                <p class="timeline-text">
+                  Mengembangkan aplikasi mobile dengan Flutter untuk deteksi
+                  dini penyakit kulit menggunakan model YOLOv8,
+                  mengimplementasikan arsitektur deep learning untuk klasifikasi
+                  penyakit kulit dengan tingkat akurasi tinggi, dan
+                  mengintegrasikan chatbot berbasis NLP untuk konsultasi
+                  penyakit.
+                </p>
+                <p class="timeline-text">
+                  Berhasil memadukan teknologi computer vision dan natural
+                  language processing dalam satu aplikasi yang user-friendly dan
+                  memperoleh Juara 3 dalam kompetisi AI NOVAC 2024.
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">
+                  Project Aplikasi Monitoring Perkembangan Anak di Sekolah
+                  Berbasis Mobile
+                </h4>
+
+                <span>Frontend Developer (Februari 2024 - Juni 2024)</span>
+
+                <p class="timeline-text">
+                  Bertanggung jawab penuh dalam mengembangkan antarmuka pengguna
+                  aplikasi menggunakan Flutter, memastikan tampilan yang
+                  responsif dan user-friendly untuk memudahkan pengguna, serta
+                  melakukan pengujian dan debugging aplikasi secara menyeluruh
+                  untuk memastikan fungsionalitas yang optimal
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">
+                  Project Merancang Website Jadwal Piket di Sekolah
+                </h4>
+
+                <span>Frontend Developer (Februari 2024 - Mei 2024)</span>
+
+                <p class="timeline-text">
+                  Mengembangkan antarmuka responsif dan user-friendly untuk
+                  website jadwal piket menggunakan HTML, CSS, dan JavaScript
+                  yang terintegrasi dengan Laravel, bekerja sama dengan tim
+                  backend untuk memastikan integrasi API yang mulus dan
+                  menampilkan data secara real-time, serta menambahkan fitur
+                  interaktif seperti point bagi siswa dan papan peringkat yang
+                  menarik.
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">Analisis Pokemon Dataset</h4>
+
+                <span>Data Analysis (Juni 2024)</span>
+
+                <p class="timeline-text">
+                  Membersihkan dataset, menganalisis distribusi statistik dasar
+                  seperti HP, Attack, dan Defense menggunakan Python, serta
+                  membuat visualisasi data untuk menggambarkan perbedaan antara
+                  Pokemon Legendary dan non-Legendary.
+                </p>
+              </li>
+            </ol>
+          </section>
+
+          <!-- <section class="skill">
+            <h3 class="h3 skills-title">My skills</h3>
+
+            <ul class="skills-list content-card">
+              <li class="skills-item">
+                <div class="title-wrapper">
+                  <h5 class="h5">Data Analysis & Statistics</h5>
+                  <data value="85">85%</data>
+                </div>
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-fill" style="width: 85%"></div>
+                </div>
+              </li>
+
+              <li class="skills-item">
+                <div class="title-wrapper">
+                  <h5 class="h5">Machine Learning</h5>
+                  <data value="80">80%</data>
+                </div>
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-fill" style="width: 80%"></div>
+                </div>
+              </li>
+
+              <li class="skills-item">
+                <div class="title-wrapper">
+                  <h5 class="h5">Python Programming</h5>
+                  <data value="90">90%</data>
+                </div>
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-fill" style="width: 90%"></div>
+                </div>
+              </li>
+
+              <li class="skills-item">
+                <div class="title-wrapper">
+                  <h5 class="h5">Data Visualization</h5>
+                  <data value="85">85%</data>
+                </div>
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-fill" style="width: 85%"></div>
+                </div>
+              </li>
+
+              <li class="skills-item">
+                <div class="title-wrapper">
+                  <h5 class="h5">Deep Learning</h5>
+                  <data value="75">75%</data>
+                </div>
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-fill" style="width: 75%"></div>
+                </div>
+              </li>
+              <li class="skills-item">
+                <div class="title-wrapper">
+                  <h5 class="h5">Web & Mobile design</h5>
+                  <data value="80">80%</data>
+                </div>
+
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-fill" style="width: 80%"></div>
+                </div>
+              </li>
+
+              <li class="skills-item">
+                <div class="title-wrapper">
+                  <h5 class="h5">Front End Developer</h5>
+                  <data value="70">70%</data>
+                </div>
+
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-fill" style="width: 70%"></div>
+                </div>
+              </li>
+
+              <li class="skills-item">
+                <div class="title-wrapper">
+                  <h5 class="h5">Analisis Data</h5>
+                  <data value="80">80%</data>
+                </div>
+
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-fill" style="width: 80%"></div>
+                </div>
+              </li>
+
+              <li class="skills-item">
+                <div class="title-wrapper">
+                  <h5 class="h5">Back End Developer</h5>
+                  <data value="50">50%</data>
+                </div>
+
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-fill" style="width: 50%"></div>
+                </div>
+              </li>
+            </ul>
+          </section> -->
+
+          <section class="skill">
+            <h3 class="h3 skills-title">Technical Skills</h3>
+
+            <div class="skills-content">
+              <!-- Data Science Skills -->
+              <div class="skill-category">
+                <h4 class="h4">Data Science & AI</h4>
+                <ul class="skills-list">
+                  <li>Python (NumPy, Pandas, Scikit-learn)</li>
+                  <li>Machine Learning & Deep Learning</li>
+                  <li>Data Analysis & Statistics</li>
+                  <li>TensorFlow & PyTorch</li>
+                  <li>Computer Vision (YOLO, OpenCV)</li>
+                  <li>Data Visualization (Matplotlib, Seaborn)</li>
+                  <li>SQL & Database Management</li>
+                  <li>Big Data Tools (Hadoop, Spark)</li>
+                  <li>Model Deployment & MLOps</li>
+                </ul>
+              </div>
+
+              <!-- Web Development Skills -->
+              <div class="skill-category">
+                <h4 class="h4">Web Development</h4>
+                <ul class="skills-list">
+                  <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                  <li>React.js & Frontend Frameworks (Tailwind & Boostrap)</li>
+                  <li>Node.js & Next.js</li>
+                  <li>PHP & Laravel</li>
+                  <li>RESTful APIs</li>
+                  <li>Responsive Design</li>
+                  <li>Version Control (Git)</li>
+                  <li>UI/UX Design Principles</li>
+                  <li>Web Performance Optimization</li>
+                </ul>
+              </div>
+
+              <!-- Additional Skills -->
+              <div class="skill-category">
+                <h4 class="h4">Tools & Others</h4>
+                <ul class="skills-list">
+                  <li>Docker & Containerization</li>
+                  <li>Cloud Services (AWS, GCP)</li>
+                  <li>Agile Development</li>
+                  <li>Testing & Debugging</li>
+                  <li>Technical Documentation</li>
+                  <li>Project Management</li>
+                  <li>Problem Solving</li>
+                  <li>Team Collaboration</li>
+                  <li>Communication Skills</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </article>
+
+        <!--
+        - #PORTFOLIO
+      -->
+
+        <article class="portfolio" data-page="project">
+          <header>
+            <h2 class="h2 article-title">Project</h2>
+          </header>
+
+          <section class="projects">
+            <ul class="filter-list">
+              <li class="filter-item">
+                <button class="active" data-filter-btn>All</button>
+              </li>
+              <li class="filter-item">
+                <button data-filter-btn>Mobile Programming</button>
+              </li>
+              <li class="filter-item">
+                <button data-filter-btn>Data Analysis</button>
+              </li>
+              <li class="filter-item">
+                <button data-filter-btn>Web Development</button>
+              </li>
+              <li class="filter-item">
+                <button data-filter-btn>Data Science</button>
+              </li>
+            </ul>
+
+            <div class="filter-select-box">
+              <button class="filter-select" data-select>
+                <div class="select-value" data-selecct-value>
+                  Select category
+                </div>
+
+                <div class="select-icon">
+                  <ion-icon name="chevron-down"></ion-icon>
+                </div>
+              </button>
+
+              <ul class="select-list">
+                <li class="select-item">
+                  <button data-select-item>All</button>
+                </li>
+
+                <li class="select-item">
+                  <button data-select-item>Mobile Programming</button>
+                </li>
+
+                <li class="select-item">
+                  <button data-select-item>Data Analysis</button>
+                </li>
+
+                <li class="select-item">
+                  <button data-select-item>Web Development</button>
+                </li>
+                <li class="select-item">
+                  <button data-select-item>Data Science</button>
+                </li>
+              </ul>
+            </div>
+
+            <ul class="project-list">
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="web development"
+              >
+                <a href="#">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/project-1.jpg"
+                      alt="CleanClass"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">CleanClass</h3>
+
+                  <p class="project-category">Web Development</p>
+                </a>
+              </li>
+
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="mobile programming"
+              >
+                <a href="#">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/project-2.png"
+                      alt="KidsTrackr"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">Kids Trackr</h3>
+
+                  <p class="project-category">Mobile Programming</p>
+                </a>
+              </li>
+
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="mobile programming"
+              >
+                <a href="#">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/project-3.png"
+                      alt="SkinSenseAI"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">SkinSenseAI</h3>
+
+                  <p class="project-category">Mobile Programming</p>
+                </a>
+              </li>
+
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="data analysis"
+              >
+                <a href="#">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/project-4.png"
+                      alt="brawlhalla"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">Pokemon Dataset</h3>
+
+                  <p class="project-category">Data Analysis</p>
+                </a>
+              </li>
+
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="web development"
+              >
+                <a href="#">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/project-5.png"
+                      alt="SIREM"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">SIREM</h3>
+
+                  <p class="project-category">Web Development</p>
+                </a>
+              </li>
+
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="data analysis"
+              >
+                <a href="#">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/project-6.png"
+                      alt="Amazon Analysis"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">Amazon Analysis</h3>
+
+                  <p class="project-category">Data Analysis</p>
+                </a>
+              </li>
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="data analysis"
+              >
+                <a href="#">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+                    <img
+                      src="./assets/images/project-7.png"
+                      alt="Social Network Analysis"
+                      loading="lazy"
+                    />
+                  </figure>
+                  <h3 class="project-title">Social Network Analysis</h3>
+                  <p class="project-category">Data Analysis</p>
+                </a>
+              </li>
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="data science"
+              >
+                <a href="#">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+                    <img
+                      src="./assets/images/project-8.png"
+                      alt="RockPaperScissorsClassification"
+                      loading="lazy"
+                    />
+                  </figure>
+                  <h3 class="project-title">
+                    Rock Paper Scissors Classification
+                  </h3>
+                  <p class="project-category">Data Science</p>
+                </a>
+              </li>
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="data science"
+              >
+                <a href="#">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+                    <img
+                      src="./assets/images/project-9.png"
+                      alt="Waste Classification"
+                      loading="lazy"
+                    />
+                  </figure>
+                  <h3 class="project-title">Waste Classification</h3>
+                  <p class="project-category">Data Science</p>
+                </a>
+              </li>
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="data science"
+              >
+                <a href="#">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+                    <img
+                      src="./assets/images/project-10.png"
+                      alt="Vehicle Classification"
+                      loading="lazy"
+                    />
+                  </figure>
+                  <h3 class="project-title">Vehicle Classification</h3>
+                  <p class="project-category">Data Science</p>
+                </a>
+              </li>
+            </ul>
+          </section>
+        </article>
+
+        <div class="portfolio-modal" id="portfolioModal">
+          <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+              <h3 id="modal-title"></h3>
+              <div class="modal-image-container">
+                <img id="modal-image" src="" alt="Project Screenshot" />
+              </div>
+              <div class="project-details">
+                <h4>Project Description</h4>
+                <p id="modal-description"></p>
+
+                <h4>My Role</h4>
+                <p id="modal-role"></p>
+
+                <h4>Key Features</h4>
+                <ul id="modal-highlights"></ul>
+
+                <h4>Technical Challenges & Solutions</h4>
+                <ul id="modal-challenges"></ul>
+
+                <h4>Impact & Outcomes</h4>
+                <ul id="modal-outcomes"></ul>
+
+                <h4>Technologies Used</h4>
+                <ul id="modal-tech"></ul>
+
+                <h4>Project Duration</h4>
+                <p id="modal-duration"></p>
+
+                <!-- <h4>Links</h4>
+                <div id="modal-links"></div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--- #CONTACT -->
+
+        <article class="contact" data-page="contact">
+          <header>
+            <h2 class="h2 article-title">Contact</h2>
+          </header>
+
+          <section class="mapbox" data-mapbox>
+            <figure>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15842.361145649626!2d107.7248408!3d-6.9394708!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c36c37665ead%3A0x7de84695e115aeea!2sProgram%20Studi%20Teknik%20Komputer%20UPI%20Kampus%20Cibiru!5e0!3m2!1sid!2sid!4v1730212631789!5m2!1sid!2sid"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </figure>
+          </section>
+
+          <section class="contact-form">
+            <h3 class="h3 form-title">Contact Form</h3>
+
+            <form action="#" class="form" data-form>
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  name="fullname"
+                  class="form-input"
+                  placeholder="Full name"
+                  required
+                  data-form-input
+                />
+
+                <input
+                  type="email"
+                  name="email"
+                  class="form-input"
+                  placeholder="Email address"
+                  required
+                  data-form-input
+                />
+              </div>
+
+              <input
+                type="text"
+                name="nomortlp"
+                class="form-input mb-20"
+                placeholder="Telephone Number"
+                required
+                data-form-input
+              />
+
+              <textarea
+                name="message"
+                class="form-input"
+                placeholder="Your Message"
+                required
+                data-form-input
+              ></textarea>
+
+              <button class="form-btn" type="submit" disabled data-form-btn>
+                <ion-icon name="paper-plane"></ion-icon>
+                <span>Send Message</span>
+              </button>
+            </form>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <!--
+    - custom js link
+  -->
+    <script src="./assets/js/script.js"></script>
+
+    <!--
+    - ionicon link
+  -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>
