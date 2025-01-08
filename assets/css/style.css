@@ -328,7 +328,7 @@ html {
 
 body {
   /* background: var(--smoky-black); */
-  background-image: url("/assets/images/home-bg.png"); /* Add your background image */
+  /*   background-image: url("/assets/images/home-bg.png"); /* Add your background image */ 
   background-size: cover;
   background-position: center;
   color: transparent;
