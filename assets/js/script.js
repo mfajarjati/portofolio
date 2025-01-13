@@ -124,6 +124,20 @@ const pages = document.querySelectorAll("[data-page]");
 // Pilih aside dengan selector yang tepat
 const aside = document.querySelector("[data-sidebar]");
 
+window.addEventListener("load", () => {
+  // Find About page and nav link
+  const aboutPage = document.querySelector('[data-page="about"]');
+  const aboutNav = document.querySelector('[data-nav-link="about"]');
+
+  // Set active classes
+  if (aboutPage) aboutPage.classList.add("active");
+  if (aboutNav) aboutNav.classList.add("active");
+
+  // Show sidebar
+  const sidebar = document.querySelector("[data-sidebar]");
+  if (sidebar) sidebar.classList.add("show");
+});
+
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
     // Tampilkan aside hanya ketika bagian selain "Home" diklik
@@ -254,7 +268,7 @@ const portfolioData = {
       "Implementasi custom camera interface untuk hasil foto optimal",
     ],
     myRole: "Flutter Frontend Developer",
-    duration: "1 bulan (Desember 2024)",
+    duration: "2 bulan (September - Oktober 2024)",
     challenges: [
       "Optimisasi model AI untuk performa real-time di mobile device",
       "Implementasi preprocessing gambar untuk akurasi deteksi",
@@ -389,11 +403,11 @@ const portfolioData = {
       "./assets/images/sirem/report.png",
     ],
   },
-  amazonanalysis: {
-    title: "Amazon Sales Analysis - RevoU Final Project",
+  amazonprimeanalysis: {
+    title: "Amazon Prime Analysis - RevoU Final Project",
     image: "./assets/images/project-6.png",
     description:
-      "Analisis komprehensif data penjualan Amazon sebagai Final Project di RevoU Data Analytics Program. Proyek ini berfokus pada analisis tren penjualan, segmentasi customer, dan optimisasi inventory menggunakan SQL dan Python untuk data processing serta Tableau untuk visualisasi.",
+      "Proyek ini bertujuan untuk menganalisis konten film dan televisi yang tersedia di Amazon Prime Video berdasarkan metadata yang mencakup informasi seperti judul, sutradara, pemeran, negara asal, tahun rilis, durasi, rating, genre, dan tanggal penambahan ke platform. Dengan memanfaatkan dataset yang ada informasi ini, analisis dilakukan untuk mengungkap pola dan tren utama dalam perkembangan konten.",
     technologies: [
       "Python",
       "Pandas",

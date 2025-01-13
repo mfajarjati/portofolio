@@ -542,6 +542,11 @@ main {
   padding: 3px 12px;
   margin-top: 10px;
   border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.info-content .title:last-child {
+  margin-bottom: 0; /* Remove margin from last title */
 }
 
 .info_more-btn {
@@ -1622,6 +1627,11 @@ textarea.form-input::-webkit-resizer {
 
   .info-content .title {
     padding: 5px 18px;
+    margin-bottom: 10px;
+  }
+
+  .info-content .title:last-child {
+    margin-bottom: 0; /* Remove margin from last title */
   }
 
   .info_more-btn {
@@ -2171,6 +2181,11 @@ textarea.form-input::-webkit-resizer {
 
   .info-content .title {
     margin: auto;
+    margin-bottom: 10px;
+  }
+
+  .info-content .title:last-child {
+    margin-bottom: 0; /* Remove margin from last title */
   }
 
   .info_more-btn {

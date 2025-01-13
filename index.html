@@ -31,7 +31,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   </head>
 
-  <body>
+  <body style="background-image: url('./assets/images/home-bg.png')">
     <!--- #MAIN-->
 
     <main>
@@ -53,7 +53,7 @@
             </h1>
 
             <p class="title">Software Engineering</p>
-            <!-- <p class="title">Data Science</p> -->
+            <p class="title">Data Science</p>
           </div>
 
           <button class="info_more-btn" data-sidebar-btn>
@@ -147,11 +147,12 @@
 
         <nav class="navbar">
           <ul class="navbar-list">
-            <li class="navbar-item">
+            <!-- <li class="navbar-item">
               <button class="navbar-link active" data-nav-link>Home</button>
-            </li>
+            </li> -->
             <li class="navbar-item">
-              <button class="navbar-link" data-nav-link>About</button>
+              <button class="navbar-link active" data-nav-link>About</button>
+              <!-- Add active class -->
             </li>
 
             <li class="navbar-item">
@@ -170,14 +171,14 @@
 
         <!--- #ABOUT -->
 
-        <article class="home active home-article" data-page="home">
+        <!-- <article class="home active home-article" data-page="home">
           <div class="home-background">
             <h1 class="home-name">Welcome to My Portfolio...!</h1>
             <p class="home-position"></p>
           </div>
-        </article>
+        </article> -->
 
-        <article class="about" data-page="about">
+        <article class="about active" data-page="about">
           <header data-aos="fade-up">
             <h2 class="h2 article-title">About me</h2>
           </header>
@@ -645,10 +646,13 @@
             <ol class="timeline-list">
               <li class="timeline-item">
                 <h4 class="h4 timeline-item-title">
-                  Juara 3 Kompetisi AI NOVAC 2024
+                  Proyek Pendeteksi dini Penyakit kulit Berbasis Mobile
                 </h4>
 
-                <span>Mobile Developer & AI Engineer (Februari 2024)</span>
+                <span
+                  >Mobile Developer & AI Engineer (September - Oktober
+                  2024)</span
+                >
 
                 <p class="timeline-text">
                   Mengembangkan aplikasi mobile dengan Flutter untuk deteksi
@@ -671,7 +675,7 @@
                   Berbasis Mobile
                 </h4>
 
-                <span>Frontend Developer (Februari 2024 - Juni 2024)</span>
+                <span>Frontend Developer (Februari - Juni 2024)</span>
 
                 <p class="timeline-text">
                   Bertanggung jawab penuh dalam mengembangkan antarmuka pengguna
@@ -684,19 +688,41 @@
 
               <li class="timeline-item">
                 <h4 class="h4 timeline-item-title">
-                  Project Merancang Website Jadwal Piket di Sekolah
+                  Project Merancang Bisnis Pengelolaan sampah Berbasis Poin
                 </h4>
 
-                <span>Frontend Developer (Februari 2024 - Mei 2024)</span>
+                <span
+                  >Full Stack Development & AI Development (November 2024 -
+                  Januari 2025)</span
+                >
 
                 <p class="timeline-text">
-                  Mengembangkan antarmuka responsif dan user-friendly untuk
-                  website jadwal piket menggunakan HTML, CSS, dan JavaScript
-                  yang terintegrasi dengan Laravel, bekerja sama dengan tim
-                  backend untuk memastikan integrasi API yang mulus dan
-                  menampilkan data secara real-time, serta menambahkan fitur
-                  interaktif seperti point bagi siswa dan papan peringkat yang
-                  menarik.
+                  merancang sistem bisnis pengelolaan sampah yang inovatif
+                  dengan memadukan teknologi web, aplikasi mobile, dan IoT
+                  berbasis AI. Sistem ini mencakup pengembangan web admin
+                  menggunakan Next.js untuk manajemen data yang efisien,
+                  aplikasi mobile berbasis Flutter untuk memudahkan pengguna
+                  dalam mengakses layanan, serta integrasi perangkat IoT yang
+                  memanfaatkan YOLOv11 untuk melakukan klasifikasi otomatis
+                  jenis sampah dengan akurasi tinggi.
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">
+                  Analisis Konten Film dan Televisi di Amazon Prime Video
+                </h4>
+
+                <span>Data Analysis (Januari - Februari 2024)</span>
+
+                <p class="timeline-text">
+                  Menganalisis konten film dan televisi yang tersedia di Amazon
+                  Prime Video berdasarkan metadata yang mencakup informasi
+                  seperti judul, sutradara, pemeran, negara asal, tahun rilis,
+                  durasi, rating, genre, dan tanggal penambahan ke platform.
+                  Dengan memanfaatkan dataset yang ada informasi ini, analisis
+                  dilakukan untuk mengungkap pola dan tren utama dalam
+                  perkembangan konten.
                 </p>
               </li>
 
@@ -863,6 +889,24 @@
                   <li>Problem Solving</li>
                   <li>Team Collaboration</li>
                   <li>Communication Skills</li>
+                </ul>
+              </div>
+              <!-- Mobile & Desktop Development Skills -->
+              <div class="skill-category">
+                <h4 class="h4">Mobile & Desktop Development</h4>
+                <ul class="skills-list">
+                  <li>Flutter & Dart</li>
+                  <li>Java Development</li>
+                  <li>Mobile UI/UX Design</li>
+                  <li>State Management (Provider, Bloc)</li>
+                  <li>Firebase Integration</li>
+                  <li>REST API Integration</li>
+                  <li>Native Device Features</li>
+                  <li>Cross-Platform Development</li>
+                  <li>App Performance Optimization</li>
+                  <li>Mobile Testing & Debugging</li>
+                  <li>Android App Deployment</li>
+                  <li>Desktop App Development</li>
                 </ul>
               </div>
             </div>
@@ -1064,12 +1108,12 @@
 
                     <img
                       src="./assets/images/project-6.png"
-                      alt="Amazon Analysis"
+                      alt="Amazon Prime Analysis"
                       loading="lazy"
                     />
                   </figure>
 
-                  <h3 class="project-title">Amazon Analysis</h3>
+                  <h3 class="project-title">Amazon Prime Analysis</h3>
 
                   <p class="project-category">Data Analysis</p>
                 </a>
