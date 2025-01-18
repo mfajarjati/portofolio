@@ -496,23 +496,14 @@ const portfolioData = {
     ],
     links: [
       {
-        url: "https://github.com/yourusername/sna-analysis",
+        url: "https://github.com/mfajarjati/SNA-Analysis",
         text: "GitHub Repository",
-      },
-      {
-        url: "#",
-        text: "Interactive Dashboard",
-      },
-      {
-        url: "#",
-        text: "Research Paper",
       },
     ],
     documentation: [
-      "./assets/images/sna/network_viz.png",
-      "./assets/images/sna/community_detection.png",
-      "./assets/images/sna/influencer_analysis.png",
-      "./assets/images/sna/dashboard.png",
+      "./assets/images/sna/data1.png",
+      "./assets/images/sna/data2.png",
+      "./assets/images/sna/graf.png",
     ],
   },
   rockpaperscissorsclassification: {
@@ -528,6 +519,7 @@ const portfolioData = {
       "NumPy",
       "Matplotlib",
       "Google Colab",
+      "streamlit",
     ],
     highlights: [
       "Sertifikasi Machine Learning dari Dicoding Indonesia",
@@ -546,7 +538,7 @@ const portfolioData = {
       "Model deployment untuk penggunaan web-based",
     ],
     outcome: [
-      "Accuracy 88% pada test dataset",
+      "Accuracy 94% pada test dataset",
       "Real-time inference < 100ms per frame",
       "Deployment sukses di web platform",
       "Project Sertifikat Award di kelas Belajar Machine Learning",
@@ -554,17 +546,16 @@ const portfolioData = {
     ],
     links: [
       {
-        url: "https://github.com/yourusername/rps-classification",
+        url: "https://github.com/mfajarjati/mageClassificationRockPaperScissors",
         text: "GitHub Repository",
       },
-      {
-        url: "#",
-        text: "Live Demo",
-      },
-      {
-        url: "#",
-        text: "Certificate",
-      },
+    ],
+    documentation: [
+      "./assets/images/rps/dataset.png",
+      "./assets/images/rps/training.png",
+      "./assets/images/rps/augmentasi.png",
+      "./assets/images/rps/hasil.png",
+      "./assets/images/rps/hasil2.png",
     ],
   },
   wasteclassification: {
@@ -598,31 +589,24 @@ const portfolioData = {
       "Implementasi augmentasi data untuk improve model robustness",
     ],
     outcome: [
-      "Akurasi deteksi 95% untuk sampah organik",
-      "Akurasi deteksi 92% untuk sampah anorganik",
-      "Akurasi deteksi 98% untuk sampah B3",
+      "Akurasi deteksi 85% untuk sampah organik",
+      "Akurasi deteksi 97% untuk sampah anorganik",
+      "Akurasi deteksi 90% untuk sampah B3",
       " ",
       "Dataset kontribusi 1000+ gambar sampah terklasifikasi",
     ],
     links: [
       {
-        url: "https://github.com/yourusername/waste-classification",
+        url: "https://github.com/mfajarjati/wasteclassification",
         text: "GitHub Repository",
-      },
-      {
-        url: "#",
-        text: "Live Demo",
-      },
-      {
-        url: "#",
-        text: "Research Paper",
       },
     ],
     documentation: [
-      "./assets/images/waste/detection.png",
-      "./assets/images/waste/dashboard.png",
       "./assets/images/waste/training.png",
-      "./assets/images/waste/evaluation.png",
+      "./assets/images/waste/training1.png",
+      "./assets/images/waste/hasil1.png",
+      "./assets/images/waste/hasil2.png",
+      "./assets/images/waste/hasil3.jpg",
     ],
   },
   vehicleclassification: {
