@@ -194,15 +194,24 @@ const portfolioData = {
     links: [
       {
         url: "https://github.com/mfajarjati/cleanclass",
-        text: "GitHub Repository",
+        text: "GitHub Repository (Frontend)",
+      },
+      {
+        url: "https://drive.google.com/drive/folders/1xwvQsY101G2TX7bRhh2Ghq2JJGfUuGRC?usp=sharing",
+        text: "Drive Repository (Full)",
       },
     ],
     documentation: [
-      "./assets/images/cleanclass/dashboard.png",
-      "./assets/images/cleanclass/schedule.png",
-      "./assets/images/cleanclass/assessment.png",
-      "./assets/images/cleanclass/reports.png",
-      "./assets/images/cleanclass/notifications.png",
+      "./assets/images/cleanclass/dashboard-siswa.png",
+      "./assets/images/cleanclass/dashboard-guru.png",
+      "./assets/images/cleanclass/leaderboard-siswa.png",
+      "./assets/images/cleanclass/leaderboard-guru.png",
+      "./assets/images/cleanclass/jadwal-siswa.png",
+      "./assets/images/cleanclass/jadwal-guru.png",
+      "./assets/images/cleanclass/berita-siswa.png",
+      "./assets/images/cleanclass/berita-guru.png",
+      "./assets/images/cleanclass/laporan-siswa.png",
+      "./assets/images/cleanclass/laporan-guru.png",
     ],
   },
   kidstrackr: {
@@ -210,42 +219,55 @@ const portfolioData = {
     image: "./assets/images/project-2.png",
     description:
       "Aplikasi mobile untuk memantau perkembangan anak di sekolah menggunakan Flutter yang berhasil menjadi Finalis LIDM (Lomba Inovasi Digital Mahasiswa) 2024. disini bertugas dalam pengambilan data dari REST API PHP, menampilkan informasi real-time tentang aktivitas, nilai, dan laporan perkembangan anak. Aplikasi ini telah diuji dan diimplementasikan di SD Lab School UPI Cibiru.",
-    technologies: ["Flutter", "Dart", "GetX", "REST API", "PHP"],
+    technologies: ["Flutter", "Dart", "REST API", "PHP"],
     highlights: [
-      "Finalis LIDM (Lomba Inovasi Digital Mahasiswa) 2024 kategori Aplikasi Mobile",
-      "Implementasi arsitektur GetX untuk state management yang efisien",
+      "Finalis Lomba Inovasi Digital Mahasiswa 2024 kategori Inovasi Teknologi Digital Pendidikan",
+      "Integrasi chatbot dengan data untuk interaksi real-time",
       "Pengembangan fitur monitoring real-time untuk guru dan orang tua",
-      "Implementasi sistem pelaporan perkembangan anak berbasis grafik",
-      "Berhasil diimplementasikan 1 minggu di SD Lab School UPI Cibiru",
+      "Implementasi sistem pelaporan perkembangan anak berbasis AI dan data",
+      "Integrasi dengan REST API PHP untuk data management",
     ],
-    myRole: "Flutter Frontend Developer & UI/UX Designer",
+    myRole: "Flutter Frontend Developer, UI/UX Designer & AI Engineer",
     duration: "4 bulan (Januari 2024 - April 2024)",
     challenges: [
-      "Menyesuaikan UI/UX dengan kebutuhan guru SD Lab School UPI Cibiru",
-      "Optimisasi performa aplikasi untuk perangkat dengan spesifikasi rendah",
-      "Implementasi sistem offline-first untuk area dengan koneksi terbatas",
+      "Menyesuaikan UI/UX dengan kebutuhan sistem pelaporan perkembangan anak di sekolah",
+      "Mengembangkan fitur chatbot untuk interaksi real-time dengan orang tua mengenai perkembangan anak",
+      "Implementasi AI untuk analisis hasil refleksi perkembangan anak berbasis data",
       "Integrasi dengan sistem akademik yang sudah ada di sekolah",
-      "Pengembangan fitur yang user-friendly untuk guru dan orang tua",
+      "Pengembangan fitur yang user-friendly untuk guru dan orang tua serta anak",
     ],
     outcome: [
-      "Finalis Top 20 LIDM 2024 dari 250+ tim peserta",
-      "Implementasi sementara sukses di SD Lab School UPI Cibiru dengan 50+ pengguna aktif",
+      "Finalis Top 20 Lomba Inovasi Digital Mahasiswa 2024 dari 250+ tim peserta",
+      "Uji coba sukses di SD Lab School UPI Cibiru dengan 50+ pengguna aktif",
       "95% tingkat kepuasan dari guru dan orang tua dalam survey pengguna",
       "Pengurangan waktu pelaporan perkembangan siswa sebesar 70%",
-      "Pengurangan loading time sebesar 60% dengan caching",
+      "tercapainya 90% akurasi AI dalam analisis perkembangan anak",
     ],
     links: [
       {
-        url: "https://github.com/yourusername/kidstrackr",
-        text: "GitHub Repository",
+        url: "https://github.com/mfajarjati/kids-trackr",
+        text: "GitHub Repository (Frontend)",
       },
-      // { url: "#", text: "Play Store" },
+      {
+        url: "https://drive.google.com/file/d/15xpx8KT0x9iHlIH7ZBKDm6dzG9JhiUqq/view?usp=sharing",
+        text: "Drive Repository (full)",
+      },
     ],
     documentation: [
-      "./assets/images/kidstrackr/dashboard.png",
-      "./assets/images/kidstrackr/activities.png",
-      "./assets/images/kidstrackr/reports.png",
-      "./assets/images/kidstrackr/notifications.png",
+      "./assets/images/kidstrackr/started.png",
+      "./assets/images/kidstrackr/dashboard-ortu.png",
+      "./assets/images/kidstrackr/nilai-ortu.png",
+      "./assets/images/kidstrackr/jadwal-ortu.png",
+      "./assets/images/kidstrackr/nilaidetail-ortu.png",
+      "./assets/images/kidstrackr/chat-ortu.png",
+      "./assets/images/kidstrackr/berita-ortu.png",
+      "./assets/images/kidstrackr/gizi-ortu.png",
+      "./assets/images/kidstrackr/dashboard-anak.png",
+      "./assets/images/kidstrackr/belajar-anak.png",
+      "./assets/images/kidstrackr/dashboard-guru.png",
+      "./assets/images/kidstrackr/datasiswa-guru.png",
+      "./assets/images/kidstrackr/nilaidetail-guru.png",
+      "./assets/images/kidstrackr/chatbot.png",
     ],
   },
   skinsenseai: {
@@ -253,10 +275,17 @@ const portfolioData = {
     image: "./assets/images/project-3.png",
     description:
       "Aplikasi mobile untuk deteksi penyakit kulit menggunakan AI yang berhasil meraih Juara 3 di Kompetisi AI NOVAC 2024. Menggunakan TensorFlow untuk implementasi model AI di Flutter, dengan akurasi deteksi mencapai 89% untuk 10 jenis penyakit kulit umum.",
-    technologies: ["Flutter", "TensorFlow", "Python", "Firebase", "REST API"],
+    technologies: [
+      "Flutter",
+      "TensorFlow",
+      "Python",
+      "Firebase",
+      "REST API",
+      "Flask",
+    ],
     highlights: [
-      "Juara 3 Kompetisi AI NOVAC 2024 kategori Healthcare Innovation",
-      "Implementasi TensorFlow untuk on-device AI processing",
+      "Juara 3 Kompetisi AI NOVAC 2024 kategori Kesehatan dan Makhluk Hidup",
+      "Implementasi chatbot untuk konsultasi penyakit kulit",
       "Pengembangan UI/UX untuk kemudahan pengambilan foto kulit",
       "Integrasi Firebase untuk autentikasi dan penyimpanan data",
       "Implementasi custom camera interface untuk hasil foto optimal",
@@ -268,30 +297,30 @@ const portfolioData = {
       "Implementasi preprocessing gambar untuk akurasi deteksi",
       "Pengembangan UI yang intuitif untuk pengguna",
       "Manajemen state kompleks untuk proses scanning dan hasil",
-      "Handling berbagai kondisi pencahayaan dalam pengambilan foto",
+      "Pengembangan chatbot untuk konsultasi penyakit kulit real-time",
     ],
     outcome: [
       "Juara 3 dari 100+ tim di Kompetisi AI NOVAC 2024",
       "Akurasi deteksi 89% untuk 10 jenis penyakit kulit",
-      "Implementasi on-device AI untuk privacy dan kecepatan",
+      "chatbot konsultasi 24/7 dengan respon < 5 detik",
       "Proses deteksi < 5 detik per scan",
       "File size optimasi 60% dengan image preprocessing",
     ],
-    // links: [
-    //   {
-    //     url: "https://github.com/yourusername/skinsenseai",
-    //     text: "GitHub Repository",
-    //   },
-    //   {
-    //     url: "#",
-    //     text: "Play Store",
-    //   },
-    // ],
+    links: [
+      {
+        url: "https://drive.google.com/file/d/1N5XCJwV1UJIFsRvi9uAKaX_SvzafQAFv/view?usp=sharing",
+        text: "Drive Repository",
+      },
+    ],
     documentation: [
-      "./assets/images/skinsenseai/dashboard.png",
+      "./assets/images/skinsenseai/started.png",
+      "./assets/images/skinsenseai/login.png",
+      "./assets/images/skinsenseai/home.png",
       "./assets/images/skinsenseai/scanning.png",
-      "./assets/images/skinsenseai/results.png",
+      "./assets/images/skinsenseai/hasil.png",
+      "./assets/images/skinsenseai/chatbot.png",
       "./assets/images/skinsenseai/history.png",
+      "./assets/images/skinsenseai/profile.png",
     ],
   },
   pokemondataset: {
@@ -332,23 +361,17 @@ const portfolioData = {
     ],
     links: [
       {
-        url: "https://github.com/yourusername/pokemon-analysis",
+        url: "https://github.com/mfajarjati/pokemon_analysis",
         text: "GitHub Repository",
-      },
-      {
-        url: "#",
-        text: "View Analysis",
-      },
-      {
-        url: "#",
-        text: "Certification",
       },
     ],
     documentation: [
-      "./assets/images/pokemon/eda.png",
-      "./assets/images/pokemon/visualization.png",
-      "./assets/images/pokemon/statistical.png",
-      "./assets/images/pokemon/prediction.png",
+      "./assets/images/pokemon/dataset.png",
+      "./assets/images/pokemon/kekosongan.png",
+      "./assets/images/pokemon/info.png",
+      "./assets/images/pokemon/grafik1.png",
+      "./assets/images/pokemon/grafik2.png",
+      "./assets/images/pokemon/grafik3.png",
     ],
   },
   sirem: {
@@ -382,19 +405,17 @@ const portfolioData = {
     ],
     links: [
       {
-        url: "https://github.com/yourusername/sirem",
+        url: "https://github.com/mfajarjati/sirem",
         text: "GitHub Repository",
-      },
-      {
-        url: "#",
-        text: "Live Demo",
       },
     ],
     documentation: [
+      "./assets/images/sirem/landing.png",
       "./assets/images/sirem/dashboard.png",
-      "./assets/images/sirem/assessment.png",
-      "./assets/images/sirem/analytics.png",
-      "./assets/images/sirem/report.png",
+      "./assets/images/sirem/tes1.png",
+      "./assets/images/sirem/tes2.png",
+      "./assets/images/sirem/tes.png",
+      "./assets/images/sirem/hasil.png",
     ],
   },
   amazonprimeanalysis: {
@@ -402,29 +423,22 @@ const portfolioData = {
     image: "./assets/images/project-6.png",
     description:
       "Proyek ini bertujuan untuk menganalisis konten film dan televisi yang tersedia di Amazon Prime Video berdasarkan metadata yang mencakup informasi seperti judul, sutradara, pemeran, negara asal, tahun rilis, durasi, rating, genre, dan tanggal penambahan ke platform. Dengan memanfaatkan dataset yang ada informasi ini, analisis dilakukan untuk mengungkap pola dan tren utama dalam perkembangan konten.",
-    technologies: [
-      "Python",
-      "Pandas",
-      "Tableau",
-      "SQL",
-      "PostgreSQL",
-      "Matplotlib",
-    ],
+    technologies: ["Google spreadsheet", "Tableu", "Looker Studio"],
     highlights: [
-      "Best Final Project Award di RevoU Data Analytics Program",
-      "Implementasi ETL pipeline untuk data processing",
-      "Pengembangan dashboard interaktif di Tableau",
-      "Analisis RFM untuk customer segmentation",
+      "Final Project Award di RevoU Data Analytics Program",
+      "Implementasi data cleaning dan preprocessing di Google Spreadsheet",
+      "Pengembangan dashboard interaktif di Tableau dan Looker Studio",
+      "Analisis trend konten film dan televisi di Amazon Prime Video",
       "Forecasting penjualan menggunakan time series analysis",
     ],
     myRole: "Data Analyst",
     duration: "2 bulan (Januari 2024 - Februari 2024)",
     challenges: [
-      "Data cleaning untuk 1M+ records penjualan",
-      "Optimisasi query SQL untuk large dataset",
+      "Data cleaning untuk 9k+ records penjualan",
+      "Optimisasi performa dashboard untuk data large-scale",
       "Implementasi automated reporting system",
       "Integrasi multiple data sources",
-      "Visualisasi complex metrics di Tableau",
+      "Visualisasi complex metrics di Tableau dan Looker Studio",
     ],
     outcome: [
       "Identificasi potential revenue increase 25%",
@@ -435,23 +449,20 @@ const portfolioData = {
     ],
     links: [
       {
-        url: "https://github.com/yourusername/amazon-analysis",
+        url: "https://github.com/mfajarjati/amazon-analysis",
         text: "GitHub Repository",
       },
       {
-        url: "#",
+        url: "https://lookerstudio.google.com/reporting/266dbcf4-becb-4836-8213-2e5f7f49bb5c/page/qgR",
         text: "View Dashboard",
-      },
-      {
-        url: "#",
-        text: "Certificate",
       },
     ],
     documentation: [
-      "./assets/images/amazon/dashboard.png",
-      "./assets/images/amazon/analysis.png",
-      "./assets/images/amazon/presentation.png",
-      "./assets/images/amazon/certification.png",
+      "./assets/images/amazon/dashboard.jpg",
+      "./assets/images/amazon/dataset.png",
+      "./assets/images/amazon/filter.png",
+      "./assets/images/amazon/grafik1.png",
+      "./assets/images/amazon/grafik2.png",
     ],
   },
   socialnetworkanalysis: {
@@ -590,7 +601,7 @@ const portfolioData = {
       "Akurasi deteksi 95% untuk sampah organik",
       "Akurasi deteksi 92% untuk sampah anorganik",
       "Akurasi deteksi 98% untuk sampah B3",
-      "Processing time < 50ms pada GPU NVIDIA RTX 3060",
+      " ",
       "Dataset kontribusi 1000+ gambar sampah terklasifikasi",
     ],
     links: [
@@ -682,7 +693,6 @@ document.querySelectorAll(".project-item a").forEach((item) => {
       .textContent.toLowerCase()
       .replace(/\s+/g, "");
     const projectData = portfolioData[projectTitle];
-    console.log("Clicked project:", projectTitle); // Debug
 
     if (projectData) {
       // Update modal content
@@ -691,6 +701,41 @@ document.querySelectorAll(".project-item a").forEach((item) => {
       document.getElementById("modal-description").textContent =
         projectData.description;
       document.getElementById("modal-role").textContent = projectData.myRole;
+
+      // Clear existing links before adding new ones
+      const linksContainer = document.getElementById("modal-links");
+      linksContainer.innerHTML = ""; // Clear existing links
+
+      // Add new links
+      if (projectData.links && projectData.links.length > 0) {
+        projectData.links.forEach((link) => {
+          const linkElement = document.createElement("a");
+          linkElement.href = link.url;
+          linkElement.target = "_blank";
+          linkElement.rel = "noopener noreferrer";
+          linkElement.innerHTML = `
+            <ion-icon name="${
+              link.url.includes("github") ? "logo-github" : "link-outline"
+            }"></ion-icon>
+            ${link.text}
+          `;
+          linksContainer.appendChild(linkElement);
+        });
+      }
+
+      // Clear and update screenshots
+      const screenshotsContainer = document.getElementById("modal-screenshots");
+      screenshotsContainer.innerHTML = ""; // Clear existing screenshots
+
+      if (projectData.documentation && projectData.documentation.length > 0) {
+        projectData.documentation.forEach((imgSrc) => {
+          const img = document.createElement("img");
+          img.src = imgSrc;
+          img.alt = "Project documentation";
+          img.loading = "lazy";
+          screenshotsContainer.appendChild(img);
+        });
+      }
 
       // Update lists
       document.getElementById("modal-highlights").innerHTML =

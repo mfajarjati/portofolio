@@ -328,7 +328,7 @@ html {
 
 body {
   /* background: var(--smoky-black); */
-  /*   background-image: url("/assets/images/home-bg.png"); /* Add your background image */ 
+  /*   background-image: url("/assets/images/home-bg.png"); /* Add your background image */
   background-size: cover;
   background-position: center;
   color: transparent;
@@ -829,6 +829,10 @@ main {
  * #testimonials-modal
  */
 
+body.modal-open {
+  overflow: hidden;
+}
+
 .modal-container {
   position: fixed;
   top: 0;
@@ -843,6 +847,7 @@ main {
   z-index: 20;
   pointer-events: none;
   visibility: hidden;
+  overflow-y: hidden;
 }
 
 .modal-container::-webkit-scrollbar {
@@ -1870,6 +1875,18 @@ textarea.form-input::-webkit-resizer {
    * REUSED STYLE
    */
 
+  .certificate-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .modal-screenshots {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-screenshots img {
+    height: 180px;
+  }
+
   .sidebar,
   article {
     width: 700px;
@@ -1967,6 +1984,12 @@ textarea.form-input::-webkit-resizer {
   }
 }
 
+@media (max-width: 1024px) {
+  .certificate-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom untuk tablet */
+  }
+}
+
 /**
  * responsive larger than 1024px screen
  */
@@ -2035,6 +2058,10 @@ textarea.form-input::-webkit-resizer {
     border-radius: 0 20px;
     padding: 0 20px;
     box-shadow: none;
+  }
+
+  .modal-screenshots {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .navbar-list {
@@ -2239,7 +2266,27 @@ textarea.form-input::-webkit-resizer {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.9);
-  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-y: hidden; /* Enable vertical scrolling */
+}
+
+.modal-screenshots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.modal-screenshots img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.modal-screenshots img:hover {
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 .modal-content {
@@ -2253,9 +2300,63 @@ textarea.form-input::-webkit-resizer {
   border-radius: 15px;
   max-height: 85vh; /* Maximum height */
   overflow-y: auto; /* Enable scrolling within modal */
+
+  /* Custom scrollbar styling */
+  &::-webkit-scrollbar {
+    width: 20px;
+    background: var(--smoky-black);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--smoky-black);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 5px solid var(--smoky-black);
+    background: hsla(0, 0%, 100%, 0.1);
+    border-radius: 20px;
+    box-shadow: inset 1px 1px 0 hsla(0, 0%, 100%, 0.11),
+      inset -1px -1px 0 hsla(0, 0%, 100%, 0.11);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: hsla(0, 0%, 100%, 0.15);
+  }
+
+  &::-webkit-scrollbar-button {
+    height: 60px;
+  }
+}
+
+.modal-body p,
+.modal-body ul li,
+.project-details p,
+.project-details ul li {
+  font-size: var(--fs-6); /* Same size as regular paragraphs */
+  line-height: 1.6;
+  color: var(--light-gray);
+}
+
+#modal-description,
+#modal-role,
+#modal-duration,
+#modal-highlights li,
+#modal-challenges li,
+#modal-outcomes li {
+  font-size: var(--fs-6);
+  line-height: 1.6;
+}
+
+.project-details h4 {
+  color: var(--orange-yellow-crayola);
+  margin: 20px 0 10px;
+  font-size: var(--fs-5);
 }
 
 .modal-body {
+  flex: 1;
+  overflow-y: auto; /* Allow scrolling only in content area */
+  padding-right: 15px;
   padding: 20px;
   overflow-y: auto;
 }
@@ -2387,12 +2488,63 @@ textarea.form-input::-webkit-resizer {
 }
 
 #modal-tech li {
+  font-size: var(--fs-6);
   background: var(--onyx);
   color: var(--light-gray);
   padding: 5px 15px;
   border-radius: 15px;
   margin: 5px;
   display: inline-block;
+}
+
+.modal-content h3 {
+  font-size: var(--fs-2);
+  color: var(--white-2);
+  margin-bottom: 20px;
+}
+
+.modal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.modal-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: var(--fs-6);
+  transition: all 0.3s ease;
+  background: var(--onyx);
+  color: var(--orange-yellow-crayola);
+  text-decoration: none;
+}
+
+.modal-links a ion-icon {
+  font-size: 18px;
+  color: var(--orange-yellow-crayola);
+  transition: all 0.3s ease;
+}
+
+/* Separate hover states for text and icon */
+.modal-links a:hover {
+  background: var(--orange-yellow-crayola);
+}
+
+.modal-links a:hover,
+.modal-links a:hover ion-icon {
+  color: var(--onyx) !important; /* Use !important to override other styles */
+}
+
+/* Remove conflicting styles */
+#modal-links a {
+  margin-right: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
 #modal-links {
@@ -2414,4 +2566,85 @@ textarea.form-input::-webkit-resizer {
   /* Remove any text truncation properties */
   white-space: normal;
   overflow: visible;
+}
+.certificate-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.certificate-card {
+  position: relative;
+  background: var(--border-onyx);
+  padding: 15px; /* Kurangi padding */
+  border-radius: 14px;
+  box-shadow: var(--shadow-2);
+  transition: transform 0.3s ease;
+}
+
+.certificate-card::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: var(--bg-gradient-jet);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px);
+}
+
+.certificate-card img {
+  width: 100%;
+  height: auto; /* Remove fixed height */
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background: transparent; /* Remove background */
+}
+
+.certificate-info {
+  padding: 10px 0;
+}
+
+.certificate-title {
+  color: var(--white-2);
+  font-size: var(--fs-6); /* Kurangi ukuran font */
+  line-height: 1.4;
+  font-weight: var(--fw-500);
+  margin-bottom: 8px;
+}
+
+.certificate-date {
+  color: var(--light-gray);
+  font-size: var(--fs-7);
+}
+
+.certificate-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: var(--onyx);
+  color: var(--orange-yellow-crayola);
+  font-size: var(--fs-6);
+  transition: all 0.3s ease;
+}
+
+.certificate-link:hover {
+  background: var(--orange-yellow-crayola);
+  color: var(--onyx);
+}
+
+.certificate-link ion-icon {
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .certificate-grid {
+    grid-template-columns: 1fr; /* 1 kolom untuk mobile */
+  }
 }
