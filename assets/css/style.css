@@ -391,6 +391,10 @@ article {
 
 article {
   display: none;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow-x: hidden;
 }
 
 article.active {
@@ -2029,9 +2033,12 @@ textarea.form-input::-webkit-resizer {
 
   .main-content {
     position: relative;
-    width: max-content;
-    margin: auto;
-    width: 100%;
+    width: 100%; /* Pastikan selalu 100% */
+    margin: 0 auto;
+    overflow-x: hidden;
+    /* width: max-content; */
+    /* margin: auto; */
+    /* width: 100%; */
     transition: width 0.3s ease;
   }
 
