@@ -775,6 +775,57 @@ const portfolioData = {
       "./assets/images/trashtransformmobile/profile.png",
     ],
   },
+
+  steganografilsb: {
+    title: "Steganografi LSB - Image Message Encryption",
+    image: "./assets/images/project-13.png",
+    description:
+      "Aplikasi mobile untuk menyembunyikan pesan terenkripsi Caesar Cipher dalam gambar menggunakan teknik steganografi LSB (Least Significant Bit). Aplikasi ini memungkinkan pengguna untuk menyisipkan pesan rahasia ke dalam gambar dengan aman dan mengekstraknya kembali.",
+    technologies: [
+      "Flutter",
+      "Dart",
+      "Image Processing",
+      "Cryptography",
+      "Steganography",
+      "File Handling",
+    ],
+    highlights: [
+      "Implementasi algoritma Caesar Cipher untuk enkripsi pesan",
+      "Penggunaan teknik LSB untuk menyembunyikan pesan dalam gambar",
+      "Fitur pemilihan dan manipulasi gambar",
+      "Interface user-friendly untuk proses enkripsi dan dekripsi",
+      "Sistem keamanan berlapis (enkripsi + steganografi)",
+    ],
+    myRole: "Mobile Developer & Cryptography Engineer",
+    duration: "2 bulan (Februari 2024 - Maret 2024)",
+    challenges: [
+      "Implementasi algoritma LSB yang efisien",
+      "Optimisasi proses encoding/decoding gambar",
+      "Handling berbagai format gambar dan ukuran file",
+      "Memastikan kualitas gambar tetap terjaga setelah steganografi",
+      "Pengembangan UI yang intuitif untuk proses kompleks",
+    ],
+    outcome: [
+      "Berhasil mengimplementasi steganografi LSB dengan minimal distorsi gambar",
+      "Enkripsi Caesar Cipher bekerja dengan akurasi 100%",
+      "Aplikasi dapat menangani gambar hingga 10MB",
+      "Proses encoding/decoding < 3 detik per gambar",
+      "UI yang user-friendly dengan rating kepuasan pengguna 90%",
+    ],
+    links: [
+      {
+        url: "https://github.com/mfajarjati/stegocrypt",
+        text: "GitHub Repository",
+      },
+    ],
+    documentation: [
+      "./assets/images/steganografi/home.png",
+      "./assets/images/steganografi/encrpyt.png",
+      "./assets/images/steganografi/encrpyt-hasil.png",
+      "./assets/images/steganografi/decrpyt.png",
+      "./assets/images/steganografi/decrpyt-hasil.png",
+    ],
+  },
 };
 
 // Update click handlers for portfolio items
