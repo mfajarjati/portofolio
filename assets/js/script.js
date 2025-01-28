@@ -732,7 +732,7 @@ const portfolioData = {
 
   trashtransformmobile: {
     title: "Trash Transform - Mobile Application",
-    image: "./assets/images/trashtransform-mobile.png",
+    image: "./assets/images/project-12.png",
     description:
       "Aplikasi mobile untuk pengguna sistem pengelolaan sampah berbasis poin. Memungkinkan pengguna untuk memantau poin, melacak riwayat transaksi, dan menukarkan poin dengan uang digital.",
     technologies: ["Flutter", "Dart", "Firebase", "REST API", "Maps API"],
@@ -766,13 +766,13 @@ const portfolioData = {
       },
     ],
     documentation: [
-      "./assets/images/trashtransformmobile/landing.png",
-      "./assets/images/trashtransformmobile/login.png",
       "./assets/images/trashtransformmobile/home.png",
-      "./assets/images/trashtransformmobile/riwayat.png",
-      "./assets/images/trashtransformmobile/penukaran.png",
+      "./assets/images/trashtransformmobile/history.png",
+      "./assets/images/trashtransformmobile/tukar.png",
       "./assets/images/trashtransformmobile/lokasi.png",
-      "./assets/images/trashtransformmobile/ujicoba.png",
+      "./assets/images/trashtransformmobile/jenis.png",
+      "./assets/images/trashtransformmobile/idea.png",
+      "./assets/images/trashtransformmobile/profile.png",
     ],
   },
 };
