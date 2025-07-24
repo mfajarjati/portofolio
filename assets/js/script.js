@@ -196,10 +196,6 @@ const portfolioData = {
         url: "https://github.com/mfajarjati/cleanclass",
         text: "GitHub Repository (Frontend)",
       },
-      {
-        url: "https://drive.google.com/drive/folders/1xwvQsY101G2TX7bRhh2Ghq2JJGfUuGRC?usp=sharing",
-        text: "Drive Repository (Full)",
-      },
     ],
     documentation: [
       "./assets/images/cleanclass/dashboard-siswa.png",
@@ -247,10 +243,6 @@ const portfolioData = {
       {
         url: "https://github.com/mfajarjati/kids-trackr",
         text: "GitHub Repository (Frontend)",
-      },
-      {
-        url: "https://drive.google.com/file/d/15xpx8KT0x9iHlIH7ZBKDm6dzG9JhiUqq/view?usp=sharing",
-        text: "Drive Repository (full)",
       },
     ],
     documentation: [
@@ -308,8 +300,8 @@ const portfolioData = {
     ],
     links: [
       {
-        url: "https://drive.google.com/file/d/1N5XCJwV1UJIFsRvi9uAKaX_SvzafQAFv/view?usp=sharing",
-        text: "Drive Repository",
+        url: "#",
+        text: "#",
       },
     ],
     documentation: [
@@ -824,6 +816,108 @@ const portfolioData = {
       "./assets/images/steganografi/encrpyt-hasil.png",
       "./assets/images/steganografi/decrpyt.png",
       "./assets/images/steganografi/decrpyt-hasil.png",
+    ],
+  },
+  harganahotelwebsite: {
+    title: "Hargana Hotel - Intelligent Hotel Price Analytics Website",
+    image: "./assets/images/project-14.png",
+    description:
+      "Website interaktif berbasis Next.js yang dirancang untuk menampilkan data dan analitik prediksi harga hotel secara real-time. Platform ini memungkinkan pengguna untuk mengeksplorasi harga hotel, grafik tren, analisis selisih prediksi-akurat, dan ulasan hotel yang diolah dengan sentimen analysis.",
+    technologies: [
+      "Next.js",
+      "TailwindCSS",
+      "Mantine UI",
+      "Recharts",
+      "Firebase (Hosting & Database)",
+    ],
+    highlights: [
+      "Pengembangan UI modern dengan framework Mantine UI dan TailwindCSS yang responsif",
+      "Integrasi model Machine Learning ke dalam frontend melalui API untuk prediksi harga hotel",
+      "Visualisasi grafik harga dan selisih prediksi-akurat menggunakan Recharts",
+      "Implementasi sistem pencarian data hotel berdasarkan lokasi pengguna",
+      "Tampilan detail hotel lengkap dengan hasil analisis sentimen dari ulasan pengguna",
+    ],
+    myRole: "Full Stack Web Developer",
+    duration: "6 bulan (Februari 2025 – Juli 2025)",
+    challenges: [
+      "Integrasi model ML ke frontend dengan menggunakan API endpoint untuk membaca hasil model Python yang diekspor, memastikan kompatibilitas data antar platform",
+      "Optimisasi performa frontend dengan menerapkan lazy loading dan dynamic import pada grafik dan komponen berat lainnya",
+      "Desain UI yang kompleks dengan pendekatan atomic design dan konsistensi UI pada berbagai resolusi device",
+      "Pengelolaan state dan reaktivitas dengan memanfaatkan React hook dan context untuk sinkronisasi data dan interaksi user",
+      "Penanganan data real-time dengan integrasi dengan Firebase Realtime Database untuk penyimpanan dan pembaruan data hotel",
+    ],
+    outcome: [
+      "Mempermudah pengguna untuk membandingkan harga hotel aktual dengan hasil prediksi",
+      "Membantu pemilik hotel memahami tren dan insight dari data harga dan ulasan",
+      "Desain UI memperoleh feedback positif dari pengguna awal dengan rating user experience > 90%",
+      "Website berjalan stabil dengan > 95% uptime dan loading time < 2.5 detik",
+    ],
+    links: [
+      {
+        url: "https://harganahotel.web.app",
+        text: "Link website",
+      },
+    ],
+    documentation: [
+      "./assets/images/harganahotelwebsite/home.png",
+      "./assets/images/harganahotelwebsite/login.png",
+      "./assets/images/harganahotelwebsite/register.png",
+      "./assets/images/harganahotelwebsite/dashboard.png",
+      "./assets/images/harganahotelwebsite/lokasi.png",
+      "./assets/images/harganahotelwebsite/pilih.png",
+      "./assets/images/harganahotelwebsite/tambahan.png",
+      "./assets/images/harganahotelwebsite/model.png",
+      "./assets/images/harganahotelwebsite/progress.png",
+      "./assets/images/harganahotelwebsite/chart.png",
+      "./assets/images/harganahotelwebsite/sentimen.png",
+    ],
+  },
+  harganahotelmachinelearning: {
+    title:
+      "Hargana Hotel - Machine Learning Model for Hotel Price Prediction & Review Sentiment Analysis",
+    image: "./assets/images/project-15.png",
+    description:
+      "Riset dan pengembangan sistem prediksi harga hotel berbasis machine learning menggunakan data real dari situs pemesanan hotel. Fokus utama adalah membangun model yang mampu memprediksi harga hotel secara akurat serta menganalisis ulasan pengguna melalui pendekatan analisis sentimen.",
+    technologies: [
+      "Python (Pandas, Scikit-learn, XGBoost, LightGBM)",
+      "TextBlob (untuk analisis sentimen)",
+      "Google Hotel Data & Booking Platforms",
+      "Jupyter Notebook",
+      "Matplotlib & Seaborn (untuk visualisasi analisis)",
+    ],
+    highlights: [
+      "Scraping data harga hotel dan ulasan pengguna selama 3 bulan dari Google Hotel dan beberapa situs pemesanan langsung",
+      "Penyesuaian preprocessing agar semua jenis kamar disamakan, dan fitur difokuskan pada harga, kategori bintang hotel, rating pengguna, jarak ke pusat kota, serta pola musiman harian dan bulanan",
+      "Pelatihan data dengan 5 model: Random Forest, Gradient Boosting, XGBoost, LightGBM, dan Linear Regression",
+      "Evaluasi performa model menggunakan metrik RMSE, MAE, R², dan analisis overfitting",
+      "Analisis sentimen dari 2000+ ulasan hotel untuk menghasilkan insight tambahan dalam pemahaman kualitas hotel dari sisi pengguna",
+    ],
+    myRole: "Machine Learning Engineer & Data Analyst",
+    duration: "6 bulan (Februari 2025 – Juli 2025)",
+    challenges: [
+      "Menyeimbangkan dataset dengan preprocessing berbasis fitur musiman agar model tidak overfit terhadap waktu tertentu",
+      "Menghadapi variasi harga antar platform: menggunakan median harga antar situs untuk stabilisasi target prediksi",
+      "Penyesuaian hyperparameter model untuk menekan overfitting dan meningkatkan generalisasi",
+      "Proses labeling sentimen dengan metode lexicon-based menggunakan TextBlob, serta evaluasi hasil labeling",
+    ],
+    outcome: [
+      "Model terbaik (XGBoost) menghasilkan RMSE 93.334, MAE 64.515, dan R² 0.8643",
+      "Data analitik mampu memberikan insight terkait fluktuasi harga berdasarkan waktu dan lokasi",
+      "Analisis sentimen mendukung visualisasi skor ulasan dan membantu pemilik hotel memahami persepsi pelanggan",
+      "Hasil riset ini menjadi dasar sistem rekomendasi untuk pemilik hotel terkait strategi penetapan harga",
+    ],
+    links: [
+      {
+        url: "https://github.com/mfajarjati/harganahotel-ml",
+        text: "GitHub Repository",
+      },
+    ],
+    documentation: [
+      "./assets/images/harganahotelml/features.png",
+      "./assets/images/harganahotelml/heatmap.png",
+      "./assets/images/harganahotelml/perbandingan1.png",
+      "./assets/images/harganahotelml/perbandingan2.png",
+      "./assets/images/harganahotelml/tabel.png",
     ],
   },
 };
