@@ -37,10 +37,10 @@ for (let i = 0; i < testimonialsItem.length; i++) {
     modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
     modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
     modalTitle.innerHTML = this.querySelector(
-      "[data-testimonials-title]"
+      "[data-testimonials-title]",
     ).innerHTML;
     modalText.innerHTML = this.querySelector(
-      "[data-testimonials-text]"
+      "[data-testimonials-text]",
     ).innerHTML;
 
     testimonialsModalFunc();
@@ -68,22 +68,129 @@ for (let i = 0; i < selectItems.length; i++) {
     selectValue.innerText = this.innerText;
     elementToggleFunc(select);
     filterFunc(selectedValue);
+    syncActiveFilterButton(selectedValue);
   });
 }
 
 // filter variables
 const filterItems = document.querySelectorAll("[data-filter-item]");
+const projectPagination = document.querySelector("[data-project-pagination]");
+const projectsSection = document.querySelector(".projects");
+const certificatesSection = document.querySelector(".certificates");
 
-const filterFunc = function (selectedValue) {
-  for (let i = 0; i < filterItems.length; i++) {
-    if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
-    } else {
-      filterItems[i].classList.remove("active");
+const PROJECTS_PER_PAGE = 9;
+let currentProjectFilter = "all";
+let currentProjectPage = 1;
+
+const normalizeFilterValue = function (value) {
+  return String(value || "")
+    .toLowerCase()
+    .trim();
+};
+
+const scrollToSectionTop = function (sectionElement) {
+  if (!sectionElement) return;
+
+  const targetTop =
+    sectionElement.getBoundingClientRect().top + window.scrollY - 20;
+  window.scrollTo({ top: targetTop, behavior: "smooth" });
+};
+
+const getFilteredProjectItems = function (selectedValue) {
+  const normalizedValue = normalizeFilterValue(selectedValue);
+
+  return Array.from(filterItems).filter((item) => {
+    if (normalizedValue === "all") return true;
+    return item.dataset.category === normalizedValue;
+  });
+};
+
+const renderPaginationButtons = function (
+  container,
+  totalPages,
+  currentPage,
+  onPageChange,
+) {
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  if (totalPages <= 1) {
+    container.style.display = "none";
+    return;
+  }
+
+  container.style.display = "flex";
+
+  for (let page = 1; page <= totalPages; page++) {
+    const pageButton = document.createElement("button");
+    pageButton.type = "button";
+    pageButton.className = "pagination-btn";
+    pageButton.textContent = page;
+
+    if (page === currentPage) {
+      pageButton.classList.add("active");
+      pageButton.setAttribute("aria-current", "page");
+    }
+
+    pageButton.addEventListener("click", function () {
+      onPageChange(page);
+    });
+
+    container.appendChild(pageButton);
+  }
+};
+
+const syncActiveFilterButton = function (selectedValue) {
+  const normalizedValue = normalizeFilterValue(selectedValue);
+
+  for (let i = 0; i < filterBtn.length; i++) {
+    const buttonValue = normalizeFilterValue(filterBtn[i].innerText);
+
+    if (buttonValue === normalizedValue) {
+      lastClickedBtn.classList.remove("active");
+      filterBtn[i].classList.add("active");
+      lastClickedBtn = filterBtn[i];
+      break;
     }
   }
+};
+
+const renderProjectPage = function (selectedValue, page = 1) {
+  currentProjectFilter = normalizeFilterValue(selectedValue);
+
+  const matchedItems = getFilteredProjectItems(currentProjectFilter);
+  const totalPages = Math.max(
+    1,
+    Math.ceil(matchedItems.length / PROJECTS_PER_PAGE),
+  );
+
+  currentProjectPage = Math.min(Math.max(page, 1), totalPages);
+
+  for (let i = 0; i < filterItems.length; i++) {
+    filterItems[i].classList.remove("active");
+  }
+
+  const startIndex = (currentProjectPage - 1) * PROJECTS_PER_PAGE;
+  const endIndex = startIndex + PROJECTS_PER_PAGE;
+
+  matchedItems.slice(startIndex, endIndex).forEach((item) => {
+    item.classList.add("active");
+  });
+
+  renderPaginationButtons(
+    projectPagination,
+    totalPages,
+    currentProjectPage,
+    function (nextPage) {
+      renderProjectPage(currentProjectFilter, nextPage);
+      scrollToSectionTop(projectsSection);
+    },
+  );
+};
+
+const filterFunc = function (selectedValue) {
+  renderProjectPage(selectedValue, 1);
 };
 
 // add event in all filter button items for large screen
@@ -95,11 +202,53 @@ for (let i = 0; i < filterBtn.length; i++) {
     selectValue.innerText = this.innerText;
     filterFunc(selectedValue);
 
-    lastClickedBtn.classList.remove("active");
-    this.classList.add("active");
-    lastClickedBtn = this;
+    syncActiveFilterButton(selectedValue);
   });
 }
+
+// certificates pagination
+const certificateItems = document.querySelectorAll(".certificate-card");
+const certificatePagination = document.querySelector(
+  "[data-certificate-pagination]",
+);
+const CERTIFICATES_PER_PAGE = 9;
+let currentCertificatePage = 1;
+
+const renderCertificatePage = function (page = 1) {
+  const totalPages = Math.max(
+    1,
+    Math.ceil(certificateItems.length / CERTIFICATES_PER_PAGE),
+  );
+
+  currentCertificatePage = Math.min(Math.max(page, 1), totalPages);
+
+  for (let i = 0; i < certificateItems.length; i++) {
+    certificateItems[i].style.display = "none";
+  }
+
+  const startIndex = (currentCertificatePage - 1) * CERTIFICATES_PER_PAGE;
+  const endIndex = startIndex + CERTIFICATES_PER_PAGE;
+
+  Array.from(certificateItems)
+    .slice(startIndex, endIndex)
+    .forEach((item) => {
+      item.style.display = "block";
+    });
+
+  renderPaginationButtons(
+    certificatePagination,
+    totalPages,
+    currentCertificatePage,
+    function (nextPage) {
+      renderCertificatePage(nextPage);
+      scrollToSectionTop(certificatesSection);
+    },
+  );
+};
+
+// initialize pagination state
+renderProjectPage("all", 1);
+renderCertificatePage(1);
 
 // contact form variables
 const form = document.querySelector("[data-form]");
@@ -194,7 +343,7 @@ const portfolioData = {
     links: [
       {
         url: "https://github.com/mfajarjati/cleanclass",
-        text: "GitHub Repository (Frontend)",
+        text: "GitHub Repository",
       },
     ],
     documentation: [
@@ -242,7 +391,7 @@ const portfolioData = {
     links: [
       {
         url: "https://github.com/mfajarjati/kids-trackr",
-        text: "GitHub Repository (Frontend)",
+        text: "GitHub Repository",
       },
     ],
     documentation: [
@@ -298,12 +447,7 @@ const portfolioData = {
       "Proses deteksi < 5 detik per scan",
       "File size optimasi 60% dengan image preprocessing",
     ],
-    links: [
-      {
-        url: "#",
-        text: "#",
-      },
-    ],
+    links: [],
     documentation: [
       "./assets/images/skinsenseai/started.png",
       "./assets/images/skinsenseai/login.png",
@@ -653,10 +797,6 @@ const portfolioData = {
         url: "https://github.com/mfajarjati/wasteclassification",
         text: "GitHub Repository",
       },
-      {
-        url: "https://drive.google.com/drive/folders/16zeic1fjCliB8y4e913TTxKBvourFnw6",
-        text: "Drive Repository",
-      },
     ],
     documentation: [
       "./assets/images/waste/training.PNG",
@@ -705,8 +845,8 @@ const portfolioData = {
     ],
     links: [
       {
-        url: "https://drive.google.com/file/d/1EBoz9kudNLdr0Uq1Et1d-NQLD9JceTav/view?usp=sharing",
-        text: "Drive Repository",
+        url: "https://trash-transform.vercel.app",
+        text: "Live Website",
       },
     ],
     documentation: [
@@ -751,12 +891,7 @@ const portfolioData = {
       "Sistem penukaran rewards menjadi uang berjalan lancar",
       "Pengembangan selesai sesuai timeline dan waktu",
     ],
-    links: [
-      {
-        url: "https://drive.google.com/file/d/1-WgNjbM8FrSrSAZewGt_u1KeRtNUPwbr/view?usp=sharing",
-        text: "Drive Repository",
-      },
-    ],
+    links: [],
     documentation: [
       "./assets/images/trashtransformmobile/home.png",
       "./assets/images/trashtransformmobile/history.png",
@@ -854,10 +989,11 @@ const portfolioData = {
     ],
     links: [
       {
-        url: "https://harganahotel.web.app",
+        url: "https://harganahotel.vercel.app",
         text: "Link website",
       },
     ],
+    loginInfo: ["Email: muhammad.fajarjati@gmail.com", "Password: 12345678"],
     documentation: [
       "./assets/images/harganahotelwebsite/home.png",
       "./assets/images/harganahotelwebsite/login.png",
@@ -941,11 +1077,31 @@ document.querySelectorAll(".project-item a").forEach((item) => {
 
       // Clear existing links before adding new ones
       const linksContainer = document.getElementById("modal-links");
-      linksContainer.innerHTML = ""; // Clear existing links
+      const linksSection = document.getElementById("modal-links-section");
+      linksContainer.innerHTML = "";
 
-      // Add new links
-      if (projectData.links && projectData.links.length > 0) {
-        projectData.links.forEach((link) => {
+      const loginInfoContainer = document.getElementById("modal-login-info");
+      const loginInfoSection = document.getElementById(
+        "modal-login-info-section",
+      );
+      loginInfoContainer.innerHTML = "";
+
+      // Add only valid links and toggle links section visibility
+      const validLinks = Array.isArray(projectData.links)
+        ? projectData.links.filter((link) => {
+            if (!link || typeof link !== "object") return false;
+
+            const url = String(link.url || "").trim();
+            const text = String(link.text || "").trim();
+
+            return url && text && url !== "#" && text !== "#";
+          })
+        : [];
+
+      if (validLinks.length > 0) {
+        linksSection.style.display = "block";
+
+        validLinks.forEach((link) => {
           const linkElement = document.createElement("a");
           linkElement.href = link.url;
           linkElement.target = "_blank";
@@ -958,6 +1114,74 @@ document.querySelectorAll(".project-item a").forEach((item) => {
           `;
           linksContainer.appendChild(linkElement);
         });
+      } else {
+        linksSection.style.display = "none";
+      }
+
+      // Add login information conditionally
+      const validLoginInfo = Array.isArray(projectData.loginInfo)
+        ? projectData.loginInfo
+            .map((item) => {
+              // Support object format: { label: "Email", value: "admin" }
+              if (item && typeof item === "object" && !Array.isArray(item)) {
+                const label = String(item.label || "").trim();
+                const value = String(item.value || "").trim();
+
+                if (!label || !value || value === "#") return null;
+                return { label, value };
+              }
+
+              // Support string format: "Email: admin"
+              if (typeof item === "string") {
+                const raw = item.trim();
+                if (!raw || raw === "#") return null;
+
+                const separatorIndex = raw.indexOf(":");
+
+                if (separatorIndex === -1) {
+                  return {
+                    label: "Info",
+                    value: raw,
+                  };
+                }
+
+                const label = raw.slice(0, separatorIndex).trim();
+                const value = raw.slice(separatorIndex + 1).trim();
+
+                if (!label || !value || value === "#") return null;
+
+                return {
+                  label,
+                  value,
+                };
+              }
+
+              return null;
+            })
+            .filter(Boolean)
+        : [];
+
+      if (validLoginInfo.length > 0) {
+        loginInfoSection.style.display = "block";
+
+        validLoginInfo.forEach((item) => {
+          const row = document.createElement("div");
+          row.className = "login-info-item";
+
+          const label = document.createElement("span");
+          label.className = "login-info-label";
+          label.textContent = `${item.label}:`;
+
+          const value = document.createElement("span");
+          value.className = "login-info-value";
+          value.textContent = item.value;
+
+          row.appendChild(label);
+          row.appendChild(value);
+          loginInfoContainer.appendChild(row);
+        });
+      } else {
+        loginInfoSection.style.display = "none";
       }
 
       // Clear and update screenshots
@@ -989,8 +1213,14 @@ document.querySelectorAll(".project-item a").forEach((item) => {
         projectData.duration;
 
       // Show modal
-      const modal = document.getElementById("portfolioModal");
-      modal.style.display = "block";
+      const modalElement = document.getElementById("portfolioModal");
+      const modalContent = modalElement.querySelector(".modal-content");
+      const modalBody = modalElement.querySelector(".modal-body");
+
+      modalElement.style.display = "block";
+
+      if (modalContent) modalContent.scrollTop = 0;
+      if (modalBody) modalBody.scrollTop = 0;
     }
   });
 });

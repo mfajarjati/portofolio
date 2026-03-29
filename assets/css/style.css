@@ -17,20 +17,22 @@
   );
 
   /* background menu minat, skill , testtimoni, send massages*/
-  --bg-gradient-jet: linear-gradient(
+  --bg-gradient-jet:
+    linear-gradient(
       to bottom right,
       hsl(218, 29%, 25%) 0%,
       hsl(218, 29%, 25%) 100%
     ),
     /* background menu minat, skill , testtimoni, send massages*/
-      hsl(240, 2%, 13%);
+    hsl(240, 2%, 13%);
 
   --bg-gradient-yellow-1: linear-gradient(
     to bottom right,
     hsl(45, 100%, 71%) 0%,
     hsla(36, 100%, 69%, 0) 50%
   );
-  --bg-gradient-yellow-2: linear-gradient(
+  --bg-gradient-yellow-2:
+    linear-gradient(
       135deg,
       hsla(45, 100%, 71%, 0.251) 0%,
       hsla(35, 100%, 68%, 0) 59.86%
@@ -1294,6 +1296,38 @@ body.modal-open {
   font-weight: var(--fw-300);
 }
 
+.pagination {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.pagination-btn {
+  min-width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid var(--jet);
+  background: var(--eerie-black-2);
+  color: var(--light-gray);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-500);
+  text-align: center;
+  transition: var(--transition-1);
+}
+
+.pagination-btn:hover {
+  color: var(--orange-yellow-crayola);
+  border-color: var(--orange-yellow-crayola);
+}
+
+.pagination-btn.active {
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+  border-color: var(--orange-yellow-crayola);
+}
+
 /*-----------------------------------*\
   #BLOG
 \*-----------------------------------*/
@@ -2142,7 +2176,8 @@ textarea.form-input::-webkit-resizer {
     border: 5px solid var(--smoky-black);
     background: hsla(0, 0%, 100%, 0.1);
     border-radius: 20px;
-    box-shadow: inset 1px 1px 0 hsla(0, 0%, 100%, 0.11),
+    box-shadow:
+      inset 1px 1px 0 hsla(0, 0%, 100%, 0.11),
       inset -1px -1px 0 hsla(0, 0%, 100%, 0.11);
   }
 
@@ -2322,7 +2357,8 @@ textarea.form-input::-webkit-resizer {
     border: 5px solid var(--smoky-black);
     background: hsla(0, 0%, 100%, 0.1);
     border-radius: 20px;
-    box-shadow: inset 1px 1px 0 hsla(0, 0%, 100%, 0.11),
+    box-shadow:
+      inset 1px 1px 0 hsla(0, 0%, 100%, 0.11),
       inset -1px -1px 0 hsla(0, 0%, 100%, 0.11);
   }
 
@@ -2544,6 +2580,32 @@ textarea.form-input::-webkit-resizer {
 .modal-links a:hover,
 .modal-links a:hover ion-icon {
   color: var(--onyx) !important; /* Use !important to override other styles */
+}
+
+.modal-login-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 12px 0 4px;
+}
+
+.login-info-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--onyx);
+}
+
+.login-info-label {
+  color: var(--orange-yellow-crayola);
+  font-weight: var(--fw-500);
+}
+
+.login-info-value {
+  color: var(--white-2);
+  overflow-wrap: anywhere;
 }
 
 /* Remove conflicting styles */

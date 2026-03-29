@@ -1,25 +1,4 @@
-// EmailJS Configuration
-// Untuk menggunakan fitur ini, Anda perlu:
-// 1. Daftar di https://www.emailjs.com/
-// 2. Buat service email (Gmail recommended)
-// 3. Buat template email
-// 4. Ganti konfigurasi di bawah ini
-
-const EMAIL_CONFIG = {
-  // Ganti dengan Public Key dari EmailJS Dashboard
-  PUBLIC_KEY: "pKpggcAlSuXOlBNE_",
-
-  // Ganti dengan Service ID dari EmailJS Dashboard
-  SERVICE_ID: "service_vhx3ylo",
-
-  // Ganti dengan Template ID dari EmailJS Dashboard
-  TEMPLATE_ID: "template_tous54o",
-};
-
-// Initialize EmailJS
-(function () {
-  emailjs.init(EMAIL_CONFIG.PUBLIC_KEY);
-})();
+const CONTACT_EMAIL = "muhammad.fajarjati@gmail.com";
 
 // Handle form submission
 function initContactForm() {
@@ -38,48 +17,43 @@ function initContactForm() {
       const fromName = formData.get("from_name");
       const fromEmail = formData.get("from_email");
       const phone = formData.get("phone");
+      const subject = formData.get("subject");
       const message = formData.get("message");
 
-      if (!fromName || !fromEmail || !phone || !message) {
+      if (!fromName || !fromEmail || !phone || !subject || !message) {
         alert("Mohon lengkapi semua field yang diperlukan.");
         return;
       }
 
       // Change button state to loading
       submitBtn.disabled = true;
-      submitBtnText.textContent = "Mengirim...";
+      submitBtnText.textContent = "Membuka email...";
 
-      // Send email using EmailJS
-      emailjs
-        .sendForm(EMAIL_CONFIG.SERVICE_ID, EMAIL_CONFIG.TEMPLATE_ID, this)
-        .then(
-          function (response) {
-            console.log("SUCCESS!", response.status, response.text);
+      const safeSubject = String(subject).trim();
+      const emailBody = [
+        `Halo Fajar,`,
+        "",
+        `Nama: ${String(fromName).trim()}`,
+        `Email Pengirim: ${String(fromEmail).trim()}`,
+        `Telepon: ${String(phone).trim()}`,
+        "",
+        "Pesan:",
+        String(message).trim(),
+      ].join("\n");
 
-            // Show success message
-            showNotification(
-              "Pesan berhasil dikirim! Terima kasih sudah menghubungi saya.",
-              "success"
-            );
+      const mailtoURL = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+        safeSubject,
+      )}&body=${encodeURIComponent(emailBody)}`;
 
-            // Reset form
-            contactForm.reset();
-          },
-          function (error) {
-            console.log("FAILED...", error);
+      window.location.href = mailtoURL;
 
-            // Show error message
-            showNotification(
-              "Maaf, terjadi kesalahan saat mengirim pesan. Silakan coba lagi atau hubungi langsung melalui email.",
-              "error"
-            );
-          }
-        )
-        .finally(function () {
-          // Reset button state
-          submitBtn.disabled = false;
-          submitBtnText.textContent = originalText;
-        });
+      showNotification(
+        "Aplikasi email dibuka. Silakan cek kembali lalu kirim emailnya.",
+        "success",
+      );
+
+      submitBtn.disabled = false;
+      submitBtnText.textContent = originalText;
     });
   }
 }
