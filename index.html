@@ -3,10 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      name="description"
+      content="Portfolio Muhammad Fajar Jati Permana — Software Engineer, Data & AI Enthusiast, Web & Mobile Developer."
     />
+    <meta name="theme-color" content="#131b2e" />
     <title>mfajarjati - Personal Portfolio</title>
 
     <!--- favicon-->
@@ -35,6 +37,23 @@
   </head>
 
   <body style="background-image: url(&quot;./assets/images/home-bg.png&quot;)">
+    <!-- #PAGE LOADER -->
+    <div
+      class="page-loader"
+      id="pageLoader"
+      aria-hidden="true"
+      role="status"
+      aria-label="Loading..."
+    >
+      <div class="loader-content">
+        <div class="loader-spinner"></div>
+        <span class="loader-logo">mfajarjati</span>
+        <div class="loader-progress">
+          <div class="loader-progress-bar" id="loaderProgressBar"></div>
+        </div>
+      </div>
+    </div>
+
     <!--- #MAIN-->
 
     <main>
@@ -45,29 +64,43 @@
           <figure class="avatar-box">
             <img
               src="./assets/images/icon2.png"
-              alt="muhammad fajar jati permana"
+              alt="Muhammad Fajar Jati Permana"
               width="80"
+              height="80"
+              fetchpriority="high"
+              decoding="async"
             />
           </figure>
 
           <div class="info-content">
-            <h1 class="name" title="Rmuhammad fajar jati permana">
+            <h1 class="name" title="Muhammad Fajar Jati Permana">
               Muhammad Fajar Jati Permana
             </h1>
 
-            <p class="title">Software Engineering</p>
-            <p class="title">Data & AI Enthusiast</p>
-            <p class="title">Web & Mobile Developer</p>
+            <div class="title-badges">
+              <p class="title">Software Engineering</p>
+              <p class="title">Data &amp; AI Enthusiast</p>
+              <p class="title">Web &amp; Mobile Developer</p>
+            </div>
           </div>
-
-          <button class="info_more-btn" data-sidebar-btn>
-            <span>Show Contacts</span>
-
-            <ion-icon name="chevron-down"></ion-icon>
-          </button>
         </div>
 
-        <div class="sidebar-info_more">
+        <button
+          class="info_more-btn"
+          data-sidebar-btn
+          aria-expanded="false"
+          aria-controls="sidebarInfoMore"
+        >
+          <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+          <span>Contact Info</span>
+          <ion-icon
+            name="chevron-down"
+            class="chevron-icon"
+            aria-hidden="true"
+          ></ion-icon>
+        </button>
+
+        <div class="sidebar-info_more" id="sidebarInfoMore">
           <div class="separator"></div>
 
           <ul class="contacts-list">
@@ -110,7 +143,7 @@
               <div class="contact-info">
                 <p class="contact-title">Birthday</p>
 
-                <time datetime="1982-06-23">13 November 2003</time>
+                <time datetime="2003-11-13">13 November 2003</time>
               </div>
             </li>
           </ul>
@@ -192,14 +225,14 @@
           </header>
 
           <section class="about-text">
-            <p data-aos="fade-right" data-aos-delay="200">
+            <p>
               Saya adalah lulusan Teknik Komputer yang memiliki minat dan
               pengalaman dalam pengembangan perangkat lunak, khususnya pada
               pengolahan data, kecerdasan buatan (AI), serta pengembangan
               aplikasi web dan mobile.
             </p>
 
-            <p data-aos="fade-left" data-aos-delay="400">
+            <p>
               Selama studi dan pengalaman proyek, saya terbiasa membangun sistem
               secara end-to-end, mulai dari pengolahan data, pengembangan model
               machine learning, hingga implementasi ke dalam aplikasi yang dapat
@@ -209,7 +242,7 @@
               computer vision dan analisis data.
             </p>
 
-            <p data-aos="fade-left" data-aos-delay="600">
+            <p>
               Saya menyukai proses memecahkan masalah melalui teknologi dan
               terus mengembangkan kemampuan di berbagai bidang, baik software
               engineering, data science, maupun AI. Dengan kombinasi pengalaman
@@ -679,7 +712,8 @@
                   PT Sekti Teknologi Globalindo
                 </h4>
                 <span
-                  >Data Management & IT Support (Agustus – Februari 2026)</span
+                  >Full Stack Website Developer & IT Support Intern (Agustus –
+                  Februari 2026)</span
                 >
                 <p class="timeline-text">
                   Berperan dalam pengelolaan data operasional serta mendukung
@@ -729,7 +763,10 @@
                 <h4 class="h4 timeline-item-title">
                   Badan Riset dan Inovasi Nasional (BRIN)
                 </h4>
-                <span>Data Science Research Intern (Februari – Juli 2025)</span>
+                <span
+                  >AI Research & Software Developer Intern (Februari – Juli
+                  2025)</span
+                >
 
                 <p class="timeline-text">
                   Terlibat dalam pengembangan solusi berbasis data dan machine
@@ -941,12 +978,17 @@
             </ul>
 
             <div class="filter-select-box">
-              <button class="filter-select" data-select>
-                <div class="select-value" data-selecct-value>
+              <button
+                class="filter-select"
+                data-select
+                aria-haspopup="listbox"
+                aria-expanded="false"
+              >
+                <div class="select-value" data-select-value>
                   Select category
                 </div>
 
-                <div class="select-icon">
+                <div class="select-icon" aria-hidden="true">
                   <ion-icon name="chevron-down"></ion-icon>
                 </div>
               </button>
@@ -974,6 +1016,52 @@
             </div>
 
             <ul class="project-list">
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="web development"
+              >
+                <a href="#">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/project-17.png"
+                      alt="fj digital solution"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">fjdigitalsolutions</h3>
+
+                  <p class="project-category">Web Development</p>
+                </a>
+              </li>
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="web development"
+              >
+                <a href="#">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/project-16.png"
+                      alt="afterschola"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">afterschola</h3>
+
+                  <p class="project-category">Web Development</p>
+                </a>
+              </li>
               <li
                 class="project-item active"
                 data-filter-item
@@ -1307,13 +1395,32 @@
           </section>
         </article>
 
-        <div class="portfolio-modal" id="portfolioModal">
+        <div
+          class="portfolio-modal"
+          id="portfolioModal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+          aria-hidden="true"
+        >
           <div class="modal-content">
-            <span class="close-modal">&times;</span>
+            <button
+              class="close-modal"
+              id="closeProjectModal"
+              aria-label="Close project modal"
+            >
+              &times;
+            </button>
             <div class="modal-body">
               <h3 id="modal-title"></h3>
               <div class="modal-image-container">
-                <img id="modal-image" src="" alt="Project Screenshot" />
+                <img
+                  id="modal-image"
+                  src=""
+                  alt="Project Screenshot"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <div class="project-details">
                 <h4>Project Description</h4>
@@ -1325,10 +1432,10 @@
                 <h4>Key Features</h4>
                 <ul id="modal-highlights"></ul>
 
-                <h4>Technical Challenges & Solutions</h4>
+                <h4>Technical Challenges &amp; Solutions</h4>
                 <ul id="modal-challenges"></ul>
 
-                <h4>Impact & Outcomes</h4>
+                <h4>Impact &amp; Outcomes</h4>
                 <ul id="modal-outcomes"></ul>
 
                 <h4>Technologies Used</h4>
@@ -1360,11 +1467,22 @@
             <h2 class="h2 article-title">Certificates</h2>
           </header>
 
-          <section class="certificate-grid">
-            <div class="certificate-card">
+          <section
+            class="certificate-grid"
+            role="list"
+            aria-label="Certificates gallery"
+          >
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Juara 3 kompetisi AI-NOVAC - ITERA, Oktober 2024"
+            >
               <img
                 src="./assets/images/certificates/sertifikat1.jpg"
-                alt="kompetisi AI-NOVAC"
+                alt="Sertifikat Juara 3 kompetisi AI-NOVAC"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1374,10 +1492,17 @@
               </div>
             </div>
 
-            <div class="certificate-card">
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Finalis Lomba Inovasi Digital Mahasiswa - Kemendikbudristek, Juni 2024"
+            >
               <img
                 src="./assets/images/certificates/sertifikat2.jpg"
-                alt="Finalis Lomba Inovasi Digital Mahasiswa"
+                alt="Sertifikat Finalis Lomba Inovasi Digital Mahasiswa"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1387,10 +1512,17 @@
               </div>
             </div>
 
-            <div class="certificate-card">
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Pelatihan Master Class On Job Training: Data Science - Bisa.ai, Desember 2024"
+            >
               <img
                 src="./assets/images/certificates/sertifikat3.jpg"
-                alt="Pelatihan Master Class On Job Training: Data Science"
+                alt="Sertifikat Master Class Data Science"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1400,10 +1532,17 @@
               </div>
             </div>
 
-            <div class="certificate-card">
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Pelatihan Belajar Machine Learning - Dicoding, Desember 2023"
+            >
               <img
                 src="./assets/images/certificates/sertifikat4.jpg"
-                alt="Pelatihan Belajar Machine Learning"
+                alt="Sertifikat Belajar Machine Learning Dicoding"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1413,10 +1552,17 @@
               </div>
             </div>
 
-            <div class="certificate-card">
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="IC3 digital literacy - Certiport, Desember 2023"
+            >
               <img
                 src="./assets/images/certificates/sertifikat5.jpg"
-                alt="IC3 digital literacy"
+                alt="Sertifikat IC3 Digital Literacy"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1426,10 +1572,17 @@
               </div>
             </div>
 
-            <div class="certificate-card">
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Pelatihan dasar pengembangan aplikasi mobile - Kemnaker, Juli 2024"
+            >
               <img
                 src="./assets/images/certificates/sertifikat6.jpg"
-                alt="Pelatihan Belajar Flutter"
+                alt="Sertifikat Pelatihan Mobile App"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1439,10 +1592,17 @@
               </div>
             </div>
 
-            <div class="certificate-card">
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Pelatihan Data Science - Dibimbing.id, Maret 2024"
+            >
               <img
                 src="./assets/images/certificates/sertifikat7.jpg"
-                alt="Pelatihan Data Science"
+                alt="Sertifikat Data Science Dibimbing"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1452,10 +1612,17 @@
               </div>
             </div>
 
-            <div class="certificate-card">
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Pelatihan Data Science Fundamental - DQLab, Februari 2024"
+            >
               <img
                 src="./assets/images/certificates/sertifikat8.jpg"
-                alt="Pelatihan Data Science Fundmental"
+                alt="Sertifikat Data Science DQLab"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1465,10 +1632,17 @@
               </div>
             </div>
 
-            <div class="certificate-card">
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Pelatihan Data Analysis - RevoU, Juni 2023"
+            >
               <img
                 src="./assets/images/certificates/sertifikat9.jpg"
-                alt="Pelatihan Data analysis"
+                alt="Sertifikat Data Analysis RevoU"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1478,10 +1652,17 @@
               </div>
             </div>
 
-            <div class="certificate-card">
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Pelatihan Fundamental Digital Marketing - Google, Juni 2021"
+            >
               <img
                 src="./assets/images/certificates/sertifikat10.jpg"
-                alt="Pelatihan Fundamental Digital Marketing"
+                alt="Sertifikat Digital Marketing Google"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1491,10 +1672,17 @@
               </div>
             </div>
 
-            <div class="certificate-card">
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Pelatihan Introduction to SQL - MySkill, Juni 2023"
+            >
               <img
                 src="./assets/images/certificates/sertifikat11.jpg"
-                alt="Pelatihan Introduction to SQL"
+                alt="Sertifikat SQL MySkill"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1504,10 +1692,17 @@
               </div>
             </div>
 
-            <div class="certificate-card">
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Pelatihan Data Science SAP Analytics - Asean Foundation, April 2024"
+            >
               <img
                 src="./assets/images/certificates/sertifikat12.jpg"
-                alt="Pelatihan Introduction to Python"
+                alt="Sertifikat SAP Analytics"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1517,10 +1712,18 @@
                 <p class="certificate-date">April 2024</p>
               </div>
             </div>
-            <div class="certificate-card">
+
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Machine Learning Model Deployment - Januari 2025"
+            >
               <img
                 src="./assets/images/certificates/sertifikat13.jpg"
-                alt="Pelatihan BISA-AI"
+                alt="Sertifikat ML Model Deployment"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1529,22 +1732,38 @@
                 <p class="certificate-date">Januari 2025</p>
               </div>
             </div>
-            <div class="certificate-card">
+
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Induksi Keselamatan Kerja Lab BRIN - Februari 2025"
+            >
               <img
                 src="./assets/images/certificates/sertifikat14.jpg"
-                alt="Pelatihan BRIN-LAB"
+                alt="Sertifikat Keselamatan Kerja Lab"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
                   Induksi keselamatan dan keamanan kerja lab
                 </h3>
-                <p class="certificate-date">Feburari 2025</p>
+                <p class="certificate-date">Februari 2025</p>
               </div>
             </div>
-            <div class="certificate-card">
+
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Microsoft Azure AI Fundamentals AI-900 - Juli 2025"
+            >
               <img
                 src="./assets/images/certificates/sertifikat15.jpg"
-                alt="Sertifikasi Microsoft AI-900"
+                alt="Sertifikat Microsoft AI-900"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1553,10 +1772,18 @@
                 <p class="certificate-date">Juli 2025</p>
               </div>
             </div>
-            <div class="certificate-card">
+
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Kelas Dasar Generatif AI - Juni 2025"
+            >
               <img
                 src="./assets/images/certificates/sertifikat16.jpg"
-                alt="Kelas codepolitan"
+                alt="Sertifikat Generatif AI"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1565,10 +1792,18 @@
                 <p class="certificate-date">Juni 2025</p>
               </div>
             </div>
-            <div class="certificate-card">
+
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Introduction to Data Analytics - Juni 2025"
+            >
               <img
                 src="./assets/images/certificates/sertifikat17.jpg"
-                alt="Kelas codepolitan"
+                alt="Sertifikat Data Analytics"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1577,10 +1812,18 @@
                 <p class="certificate-date">Juni 2025</p>
               </div>
             </div>
-            <div class="certificate-card">
+
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Mahasiswa Berprestasi Non Akademik Tingkat Jurusan - Juni 2025"
+            >
               <img
                 src="./assets/images/certificates/sertifikat18.jpg"
-                alt="mahasiswa berprestasi"
+                alt="Sertifikat Mahasiswa Berprestasi"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1589,10 +1832,18 @@
                 <p class="certificate-date">Juni 2025</p>
               </div>
             </div>
-            <div class="certificate-card">
+
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Sertifikat Pelatihan Microsoft Excel - Juli 2021"
+            >
               <img
                 src="./assets/images/certificates/sertifikat19.jpg"
-                alt="sertifikat pelatihan Microsoft excel"
+                alt="Sertifikat Microsoft Excel"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1601,10 +1852,18 @@
                 <p class="certificate-date">Juli 2021</p>
               </div>
             </div>
-            <div class="certificate-card">
+
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Sertifikat Fundamental Machine Learning and AI - Mei 2025"
+            >
               <img
                 src="./assets/images/certificates/sertifikat20.jpg"
-                alt="sertifikat aws"
+                alt="Sertifikat Fundamental ML AI"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1614,30 +1873,54 @@
                 <p class="certificate-date">Mei 2025</p>
               </div>
             </div>
-            <div class="certificate-card">
+
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Sertifikat Bootcamp Node JS - April 2023"
+            >
               <img
                 src="./assets/images/certificates/sertifikat21.jpg"
-                alt="sertifikat nodejs"
+                alt="Sertifikat Node JS"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">Sertifikat bootcamp node JS</h3>
                 <p class="certificate-date">April 2023</p>
               </div>
             </div>
-            <div class="certificate-card">
+
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Sertifikat Financial Literacy - Mei 2025"
+            >
               <img
                 src="./assets/images/certificates/sertifikat22.jpg"
-                alt="sertifikat financial"
+                alt="Sertifikat Financial Literacy"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">Sertifikat financial literacy</h3>
                 <p class="certificate-date">Mei 2025</p>
               </div>
             </div>
-            <div class="certificate-card">
+
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Sertifikat Fundamental Data Science - Juli 2025"
+            >
               <img
                 src="./assets/images/certificates/sertifikat23.jpg"
-                alt="sertifikat fundamental data science"
+                alt="Sertifikat Fundamental Data Science"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1646,10 +1929,18 @@
                 <p class="certificate-date">Juli 2025</p>
               </div>
             </div>
-            <div class="certificate-card">
+
+            <div
+              class="certificate-card"
+              role="listitem button"
+              tabindex="0"
+              aria-label="Sertifikat Data Classification and Summarization - Juni 2025"
+            >
               <img
                 src="./assets/images/certificates/sertifikat24.jpg"
-                alt="sertifikat data Classification and summarization"
+                alt="Sertifikat Data Classification"
+                loading="lazy"
+                decoding="async"
               />
               <div class="certificate-info">
                 <h3 class="certificate-title">
@@ -1734,8 +2025,9 @@
                 data-form-input
               ></textarea>
 
-              <button class="form-btn" type="submit" data-form-btn>
-                <ion-icon name="paper-plane"></ion-icon>
+              <button class="form-btn" type="submit" data-form-btn disabled>
+                <span class="loading-spinner" aria-hidden="true"></span>
+                <ion-icon name="paper-plane" aria-hidden="true"></ion-icon>
                 <span>Send Message</span>
               </button>
             </form>
@@ -1743,6 +2035,34 @@
         </article>
       </div>
     </main>
+
+    <!-- #IMAGE PREVIEW MODAL -->
+    <div
+      class="image-preview-modal"
+      id="imagePreviewModal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Image preview"
+      aria-hidden="true"
+    >
+      <button
+        class="close-preview-modal"
+        id="closePreviewModal"
+        aria-label="Close image preview"
+      >
+        &times;
+      </button>
+      <div class="preview-modal-content">
+        <img
+          id="previewModalImg"
+          src=""
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+        <p class="preview-modal-caption" id="previewModalCaption"></p>
+      </div>
+    </div>
 
     <!--
     - custom js link

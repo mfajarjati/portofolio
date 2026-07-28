@@ -9,8 +9,8 @@ function initContactForm() {
       event.preventDefault();
 
       const submitBtn = document.querySelector("[data-form-btn]");
-      const submitBtnText = submitBtn.querySelector("span");
-      const originalText = submitBtnText.textContent;
+      const submitBtnText = submitBtn ? submitBtn.querySelector("span:not(.loading-spinner)") : null;
+      const originalText = submitBtnText ? submitBtnText.textContent : "Send Message";
 
       // Validate form
       const formData = new FormData(this);
@@ -21,13 +21,13 @@ function initContactForm() {
       const message = formData.get("message");
 
       if (!fromName || !fromEmail || !phone || !subject || !message) {
-        alert("Mohon lengkapi semua field yang diperlukan.");
+        showNotification("Mohon lengkapi semua field yang diperlukan.", "error");
         return;
       }
 
       // Change button state to loading
-      submitBtn.disabled = true;
-      submitBtnText.textContent = "Membuka email...";
+      if (submitBtn) submitBtn.disabled = true;
+      if (submitBtnText) submitBtnText.textContent = "Membuka email...";
 
       const safeSubject = String(subject).trim();
       const emailBody = [
@@ -52,8 +52,11 @@ function initContactForm() {
         "success",
       );
 
-      submitBtn.disabled = false;
-      submitBtnText.textContent = originalText;
+      // Restore button state after short delay
+      setTimeout(() => {
+        if (submitBtn) submitBtn.disabled = false;
+        if (submitBtnText) submitBtnText.textContent = originalText;
+      }, 2000);
     });
   }
 }

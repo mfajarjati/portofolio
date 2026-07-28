@@ -1,78 +1,127 @@
 "use strict";
 
-// element toggle function
+/*===========================================================
+  PAGE LOADER
+===========================================================*/
+
+(function initPageLoader() {
+  const loader = document.getElementById("pageLoader");
+  const bar = document.getElementById("loaderProgressBar");
+  if (!loader || !bar) return;
+
+  let progress = 0;
+  const interval = setInterval(() => {
+    progress += Math.random() * 18 + 8;
+    if (progress >= 90) { clearInterval(interval); progress = 90; }
+    bar.style.width = progress + "%";
+  }, 120);
+
+  window.addEventListener("load", () => {
+    clearInterval(interval);
+    bar.style.width = "100%";
+    setTimeout(() => {
+      loader.classList.add("hidden");
+      loader.setAttribute("aria-hidden", "true");
+    }, 350);
+  });
+})();
+
+/*===========================================================
+  UTILITY
+===========================================================*/
+
 const elementToggleFunc = function (elem) {
   elem.classList.toggle("active");
 };
 
-// sidebar variables
+/*===========================================================
+  SIDEBAR
+===========================================================*/
+
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
-// sidebar toggle functionality for mobile
-sidebarBtn.addEventListener("click", function () {
-  elementToggleFunc(sidebar);
-});
+if (sidebarBtn && sidebar) {
+  sidebarBtn.addEventListener("click", function () {
+    elementToggleFunc(sidebar);
+    const isExpanded = sidebar.classList.contains("active");
+    sidebarBtn.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+  });
+}
 
-// testimonials variables
+/*===========================================================
+  TESTIMONIALS MODAL
+  (kept for backwards compat; testimonials section is commented out in HTML)
+===========================================================*/
+
 const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
 const modalContainer = document.querySelector("[data-modal-container]");
 const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
 const overlay = document.querySelector("[data-overlay]");
-
-// modal variable
 const modalImg = document.querySelector("[data-modal-img]");
-// const modalTitle = document.querySelector("[data-modal-title]");
+const modalTitle = document.querySelector("[data-modal-title]");
 const modalText = document.querySelector("[data-modal-text]");
 
-// modal toggle function
 const testimonialsModalFunc = function () {
-  modalContainer.classList.toggle("active");
-  overlay.classList.toggle("active");
+  if (modalContainer) modalContainer.classList.toggle("active");
+  if (overlay) overlay.classList.toggle("active");
 };
 
-// add click event to all modal items
 for (let i = 0; i < testimonialsItem.length; i++) {
   testimonialsItem[i].addEventListener("click", function () {
-    modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
-    modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-    modalTitle.innerHTML = this.querySelector(
-      "[data-testimonials-title]",
-    ).innerHTML;
-    modalText.innerHTML = this.querySelector(
-      "[data-testimonials-text]",
-    ).innerHTML;
+    const avatar = this.querySelector("[data-testimonials-avatar]");
+    const titleEl = this.querySelector("[data-testimonials-title]");
+    const textEl = this.querySelector("[data-testimonials-text]");
+
+    if (avatar && modalImg) {
+      modalImg.src = avatar.src;
+      modalImg.alt = avatar.alt;
+    }
+    if (titleEl && modalTitle) modalTitle.innerHTML = titleEl.innerHTML;
+    if (textEl && modalText) modalText.innerHTML = textEl.innerHTML;
 
     testimonialsModalFunc();
   });
 }
 
-// add click event to modal close button
-modalCloseBtn.addEventListener("click", testimonialsModalFunc);
-overlay.addEventListener("click", testimonialsModalFunc);
+if (modalCloseBtn) modalCloseBtn.addEventListener("click", testimonialsModalFunc);
+if (overlay) overlay.addEventListener("click", testimonialsModalFunc);
 
-// custom select variables
+/*===========================================================
+  CUSTOM SELECT (Filter dropdown for mobile)
+===========================================================*/
+
 const select = document.querySelector("[data-select]");
+// NOTE: fixed typo from data-selecct-value -> data-select-value (HTML updated too)
 const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
+const selectValue = document.querySelector("[data-select-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
-select.addEventListener("click", function () {
-  elementToggleFunc(this);
-});
+if (select) {
+  select.addEventListener("click", function () {
+    elementToggleFunc(this);
+    const isExpanded = this.classList.contains("active");
+    this.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+  });
+}
 
-// add event in all select items
 for (let i = 0; i < selectItems.length; i++) {
   selectItems[i].addEventListener("click", function () {
     let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    elementToggleFunc(select);
+    if (selectValue) selectValue.innerText = this.innerText;
+    if (select) {
+      select.classList.remove("active");
+      select.setAttribute("aria-expanded", "false");
+    }
     filterFunc(selectedValue);
     syncActiveFilterButton(selectedValue);
   });
 }
 
-// filter variables
+/*===========================================================
+  FILTER / PAGINATION (Projects)
+===========================================================*/
+
 const filterItems = document.querySelectorAll("[data-filter-item]");
 const projectPagination = document.querySelector("[data-project-pagination]");
 const projectsSection = document.querySelector(".projects");
@@ -90,7 +139,6 @@ const normalizeFilterValue = function (value) {
 
 const scrollToSectionTop = function (sectionElement) {
   if (!sectionElement) return;
-
   const targetTop =
     sectionElement.getBoundingClientRect().top + window.scrollY - 20;
   window.scrollTo({ top: targetTop, behavior: "smooth" });
@@ -98,7 +146,6 @@ const scrollToSectionTop = function (sectionElement) {
 
 const getFilteredProjectItems = function (selectedValue) {
   const normalizedValue = normalizeFilterValue(selectedValue);
-
   return Array.from(filterItems).filter((item) => {
     if (normalizedValue === "all") return true;
     return item.dataset.category === normalizedValue;
@@ -109,7 +156,7 @@ const renderPaginationButtons = function (
   container,
   totalPages,
   currentPage,
-  onPageChange,
+  onPageChange
 ) {
   if (!container) return;
 
@@ -162,7 +209,7 @@ const renderProjectPage = function (selectedValue, page = 1) {
   const matchedItems = getFilteredProjectItems(currentProjectFilter);
   const totalPages = Math.max(
     1,
-    Math.ceil(matchedItems.length / PROJECTS_PER_PAGE),
+    Math.ceil(matchedItems.length / PROJECTS_PER_PAGE)
   );
 
   currentProjectPage = Math.min(Math.max(page, 1), totalPages);
@@ -185,7 +232,7 @@ const renderProjectPage = function (selectedValue, page = 1) {
     function (nextPage) {
       renderProjectPage(currentProjectFilter, nextPage);
       scrollToSectionTop(projectsSection);
-    },
+    }
   );
 };
 
@@ -193,23 +240,24 @@ const filterFunc = function (selectedValue) {
   renderProjectPage(selectedValue, 1);
 };
 
-// add event in all filter button items for large screen
 let lastClickedBtn = filterBtn[0];
 
 for (let i = 0; i < filterBtn.length; i++) {
   filterBtn[i].addEventListener("click", function () {
     let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
+    if (selectValue) selectValue.innerText = this.innerText;
     filterFunc(selectedValue);
-
     syncActiveFilterButton(selectedValue);
   });
 }
 
-// certificates pagination
+/*===========================================================
+  CERTIFICATES PAGINATION
+===========================================================*/
+
 const certificateItems = document.querySelectorAll(".certificate-card");
 const certificatePagination = document.querySelector(
-  "[data-certificate-pagination]",
+  "[data-certificate-pagination]"
 );
 const CERTIFICATES_PER_PAGE = 9;
 let currentCertificatePage = 1;
@@ -217,7 +265,7 @@ let currentCertificatePage = 1;
 const renderCertificatePage = function (page = 1) {
   const totalPages = Math.max(
     1,
-    Math.ceil(certificateItems.length / CERTIFICATES_PER_PAGE),
+    Math.ceil(certificateItems.length / CERTIFICATES_PER_PAGE)
   );
 
   currentCertificatePage = Math.min(Math.max(page, 1), totalPages);
@@ -242,75 +290,299 @@ const renderCertificatePage = function (page = 1) {
     function (nextPage) {
       renderCertificatePage(nextPage);
       scrollToSectionTop(certificatesSection);
-    },
+    }
   );
 };
 
-// initialize pagination state
+// Initialize pagination state
 renderProjectPage("all", 1);
 renderCertificatePage(1);
 
-// contact form variables
+/*===========================================================
+  CONTACT FORM
+===========================================================*/
+
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
 
-// add event to all form input field
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
-    // check form validation
-    if (form.checkValidity()) {
-      formBtn.removeAttribute("disabled");
+    if (form && form.checkValidity()) {
+      if (formBtn) formBtn.removeAttribute("disabled");
     } else {
-      formBtn.setAttribute("disabled", "");
+      if (formBtn) formBtn.setAttribute("disabled", "");
     }
   });
 }
 
-// page navigation variables
+/*===========================================================
+  PAGE NAVIGATION
+===========================================================*/
+
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
-// Pilih aside dengan selector yang tepat
-const aside = document.querySelector("[data-sidebar]");
+const asideEl = document.querySelector("[data-sidebar]");
 
+// On load: show About page and sidebar by default
 window.addEventListener("load", () => {
-  // Find About page and nav link
   const aboutPage = document.querySelector('[data-page="about"]');
-  const aboutNav = document.querySelector('[data-nav-link="about"]');
-
-  // Set active classes
   if (aboutPage) aboutPage.classList.add("active");
-  if (aboutNav) aboutNav.classList.add("active");
 
-  // Show sidebar
-  const sidebar = document.querySelector("[data-sidebar]");
-  if (sidebar) sidebar.classList.add("show");
+  const sidebarEl = document.querySelector("[data-sidebar]");
+  if (sidebarEl) sidebarEl.classList.add("show");
 });
 
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
-    // Tampilkan aside hanya ketika bagian selain "Home" diklik
-    if (this.innerHTML.toLowerCase() !== "home") {
-      aside.classList.add("show");
+    const clickedText = this.innerHTML.toLowerCase().trim();
+
+    if (clickedText !== "home") {
+      if (asideEl) asideEl.classList.add("show");
     } else {
-      aside.classList.remove("show");
+      if (asideEl) asideEl.classList.remove("show");
     }
 
-    // Fungsi navigasi halaman
+    // Activate matching page and nav link by data-page attribute
     for (let j = 0; j < pages.length; j++) {
-      if (this.innerHTML.toLowerCase() === pages[j].dataset.page) {
+      const pageMatch = pages[j].dataset.page === clickedText;
+
+      if (pageMatch) {
         pages[j].classList.add("active");
-        navigationLinks[j].classList.add("active");
         window.scrollTo(0, 0);
       } else {
         pages[j].classList.remove("active");
-        navigationLinks[j].classList.remove("active");
+      }
+    }
+
+    // Sync active class on nav links
+    for (let k = 0; k < navigationLinks.length; k++) {
+      if (navigationLinks[k] === this) {
+        navigationLinks[k].classList.add("active");
+      } else {
+        navigationLinks[k].classList.remove("active");
       }
     }
   });
 }
 
+/*===========================================================
+  IMAGE PREVIEW MODAL
+===========================================================*/
+
+const imagePreviewModal = document.getElementById("imagePreviewModal");
+const previewModalImg = document.getElementById("previewModalImg");
+const previewModalCaption = document.getElementById("previewModalCaption");
+const closePreviewModalBtn = document.getElementById("closePreviewModal");
+
+let isPreviewOpen = false;
+
+function openImagePreview(src, caption) {
+  if (!imagePreviewModal || !previewModalImg) return;
+
+  previewModalImg.src = src;
+  previewModalImg.alt = caption || "";
+  if (previewModalCaption) previewModalCaption.textContent = caption || "";
+
+  imagePreviewModal.classList.add("active");
+  imagePreviewModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  isPreviewOpen = true;
+
+  // Focus the close button for keyboard users
+  if (closePreviewModalBtn) {
+    setTimeout(() => closePreviewModalBtn.focus(), 50);
+  }
+}
+
+function closeImagePreview() {
+  if (!imagePreviewModal) return;
+  imagePreviewModal.classList.remove("active");
+  imagePreviewModal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+  isPreviewOpen = false;
+
+  // Return focus to last trigger if available
+  if (lastPreviewTrigger) {
+    lastPreviewTrigger.focus();
+    lastPreviewTrigger = null;
+  }
+}
+
+let lastPreviewTrigger = null;
+
+// Close button click
+if (closePreviewModalBtn) {
+  closePreviewModalBtn.addEventListener("click", closeImagePreview);
+}
+
+// Click outside image to close
+if (imagePreviewModal) {
+  imagePreviewModal.addEventListener("click", function (e) {
+    if (e.target === imagePreviewModal || e.target === previewModalImg) {
+      closeImagePreview();
+    }
+  });
+}
+
+/*===========================================================
+  PORTFOLIO DATA
+===========================================================*/
+
 const portfolioData = {
+  fjdigitalsolutions: {
+  title: "FJ Digital Solution - Company Profile & Digital Agency Website",
+  image: "./assets/images/project-17.png",
+  description:
+    "Website company profile modern yang dikembangkan untuk FJ Digital Solution sebagai media branding dan pemasaran layanan pengembangan website, aplikasi, serta solusi Artificial Intelligence. Platform ini dirancang dengan pendekatan SEO, performa tinggi, dan desain responsif untuk meningkatkan kredibilitas bisnis sekaligus menghasilkan prospek pelanggan melalui landing page, artikel, portofolio, dan formulir konsultasi.",
+  technologies: [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Mantine UI",
+    "Supabase",
+    "PostgreSQL",
+    "React Hook Form",
+    "Zod",
+    "EmailJS",
+    "Framer Motion",
+    "Google Analytics",
+    "Google Search Console",
+  ],
+  highlights: [
+    "Mengembangkan website company profile modern menggunakan Next.js dengan performa tinggi dan SEO-friendly.",
+    "Membangun landing page interaktif untuk layanan pembuatan website, aplikasi, dan solusi Artificial Intelligence.",
+    "Mengembangkan halaman portofolio dinamis untuk menampilkan berbagai proyek yang telah dikerjakan.",
+    "Membangun sistem artikel/blog sebagai strategi Content Marketing dan Search Engine Optimization (SEO).",
+    "Mengimplementasikan formulir konsultasi dan permintaan penawaran yang terintegrasi dengan layanan email.",
+    "Mengoptimalkan struktur metadata, sitemap, robots.txt, Open Graph, dan Schema Markup untuk meningkatkan visibilitas mesin pencari.",
+    "Mengembangkan desain responsif dan modern menggunakan Mantine UI, Tailwind CSS, serta animasi interaktif.",
+    "Mengoptimalkan performa website melalui lazy loading, image optimization, code splitting, dan server-side rendering.",
+    "Mengintegrasikan Google Analytics dan Google Search Console untuk memantau performa website.",
+    "Menerapkan praktik terbaik SEO On-Page dan Technical SEO untuk meningkatkan peluang muncul di hasil pencarian Google.",
+  ],
+  myRole: "Full Stack Web Developer & UI/UX Designer",
+  duration: "1 bulan (Juli 2026)",
+  challenges: [
+    "Merancang struktur website yang mampu meningkatkan kredibilitas bisnis sekaligus mendukung strategi digital marketing.",
+    "Mengoptimalkan SEO teknis agar seluruh halaman mudah diindeks oleh mesin pencari.",
+    "Mengembangkan komponen yang reusable sehingga mudah dikembangkan pada fitur berikutnya.",
+    "Mengoptimalkan performa Core Web Vitals melalui image optimization, lazy loading, dan code splitting.",
+    "Menjaga konsistensi tampilan pada desktop, tablet, dan perangkat mobile.",
+    "Mengimplementasikan validasi formulir menggunakan React Hook Form dan Zod.",
+    "Mengembangkan halaman artikel yang SEO-friendly dengan struktur heading dan metadata yang optimal.",
+    "Membangun pengalaman pengguna yang modern melalui animasi interaktif tanpa mengurangi performa website.",
+    "Mengintegrasikan layanan email untuk konsultasi dan permintaan penawaran.",
+    "Mengoptimalkan struktur informasi agar pengunjung lebih mudah memahami layanan perusahaan.",
+  ],
+  outcome: [
+    "Berhasil membangun website company profile modern yang merepresentasikan identitas dan layanan FJ Digital Solutions.",
+    "Menyediakan landing page yang mampu memperkenalkan layanan secara profesional kepada calon pelanggan.",
+    "Mendukung strategi digital marketing melalui implementasi blog dan optimasi Search Engine Optimization (SEO).",
+    "Menghasilkan website yang cepat, responsif, dan memiliki pengalaman pengguna yang optimal.",
+    "Mempermudah calon pelanggan dalam melihat portofolio, layanan, serta menghubungi perusahaan.",
+    "Menerapkan praktik terbaik pengembangan web modern menggunakan Next.js, TypeScript, dan React.",
+    "Menghasilkan website yang scalable sehingga mudah dikembangkan untuk kebutuhan bisnis di masa mendatang.",
+    "Meningkatkan profesionalisme dan kredibilitas perusahaan melalui desain modern dan performa website yang optimal.",
+  ],
+  links: [
+    {
+      url: "https://fjdigitalsolution.vercel.app",
+      text: "Live Website",
+    },
+
+  ],
+  documentation: [
+    "./assets/images/fjdigital/home.png",
+    "./assets/images/fjdigital/portfolio.png",
+    "./assets/images/fjdigital/articles.png",
+    "./assets/images/fjdigital/article-detail.png",
+    "./assets/images/fjdigital/packages.png",
+    "./assets/images/fjdigital/about.png",
+    "./assets/images/fjdigital/contact.png",
+
+  ],
+},
+  afterschola: {
+  title: "AfterSchola LMS - Learning Management System",
+  image: "./assets/images/project-16.png",
+  description:
+    "Platform Learning Management System (LMS) berbasis web yang dikembangkan selama program magang di AfterSchola untuk mendukung proses pembelajaran digital bagi siswa, sekolah, instruktur, dan administrator. Sistem ini menyediakan marketplace kursus, pembelajaran online, gamifikasi, manajemen tugas, penilaian, serta dashboard terintegrasi untuk setiap peran pengguna. Platform dirancang agar sekolah dapat mengelola siswanya secara terpusat, instruktur dapat membuat dan mengelola materi pembelajaran, sedangkan administrator dapat mengelola seluruh operasional platform mulai dari pengguna, kursus, hingga transaksi keuangan.",
+  technologies: [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Mantine UI",
+    "Prisma",
+    "Supabase",
+    "PostgreSQL",
+    "Socket.IO",
+    "React Hook Form",
+    "Zod",
+    "Axios",
+    "Xendit"
+  ],
+  highlights: [
+    "Mengembangkan Learning Management System (LMS) dengan empat role utama yaitu Siswa, Sekolah, Instruktur, dan Administrator.",
+    "Membangun marketplace kursus sehingga siswa dapat membeli, mengakses, dan mengikuti pembelajaran secara mandiri.",
+    "Mengembangkan fitur manajemen sekolah sehingga sekolah dapat membeli kursus dan mendistribusikannya kepada seluruh siswa yang terdaftar.",
+    "Membangun dashboard instruktur untuk membuat, mengubah, menghapus, serta mempublikasikan kursus, materi, tugas, dan penilaian.",
+    "Mengembangkan dashboard administrator untuk mengelola pengguna, kursus, transaksi keuangan, dan aktivitas platform.",
+    "Mengimplementasikan sistem gamifikasi berupa poin, leaderboard, achievement, dan mini games untuk meningkatkan keterlibatan belajar siswa.",
+    "Mengintegrasikan notifikasi dan aktivitas pembelajaran secara real-time menggunakan Socket.IO.",
+    "Mengimplementasikan autentikasi, otorisasi berbasis role, serta protected route untuk setiap jenis pengguna.",
+    "Mengembangkan antarmuka yang responsif menggunakan Mantine UI dan Tailwind CSS sehingga optimal di desktop maupun perangkat mobile.",
+    "Mengintegrasikan validasi form, pengiriman email, pembuatan dokumen PDF, serta penyimpanan data berbasis Supabase.",
+  ],
+  myRole: "Full Stack Web Developer",
+  duration: "6 bulan (Februari 2026 - Juli 2026)",
+  challenges: [
+    "Merancang arsitektur sistem multi-role dengan hak akses dan dashboard yang berbeda untuk setiap jenis pengguna.",
+    "Mengembangkan alur pembelian kursus baik oleh siswa secara individu maupun oleh sekolah untuk seluruh siswanya.",
+    "Mengoptimalkan struktur database relasional menggunakan Prisma ORM dan Supabase PostgreSQL.",
+    "Mengimplementasikan autentikasi, manajemen sesi, dan role-based access control pada seluruh modul aplikasi.",
+    "Mengembangkan sinkronisasi aktivitas dan notifikasi pembelajaran secara real-time menggunakan Socket.IO.",
+    "Membangun komponen frontend yang reusable agar pengembangan lebih mudah dipelihara dan dikembangkan.",
+    "Mengimplementasikan validasi form dinamis menggunakan React Hook Form dan Zod.",
+    "Mengoptimalkan performa aplikasi melalui lazy loading, code splitting, dan optimasi rendering komponen.",
+    "Menjaga konsistensi tampilan dan pengalaman pengguna pada berbagai ukuran perangkat.",
+    "Mengintegrasikan fitur email, dokumen PDF, serta workflow pembelajaran yang kompleks dalam satu platform.",
+  ],
+  outcome: [
+    "Berhasil mengembangkan Learning Management System (LMS) berskala enterprise dengan empat role pengguna yang saling terintegrasi.",
+    "Mendigitalisasi seluruh proses pembelajaran mulai dari pembuatan kursus, pembelian, pembelajaran, penugasan, hingga penilaian.",
+    "Meningkatkan keterlibatan siswa melalui implementasi gamifikasi berupa poin, leaderboard, achievement, dan mini games.",
+    "Mempermudah sekolah dalam mengelola distribusi akses kursus kepada seluruh siswa secara terpusat.",
+    "Membantu instruktur mengelola materi pembelajaran, tugas, nilai, dan perkembangan belajar siswa melalui satu dashboard.",
+    "Memberikan administrator kontrol penuh terhadap pengguna, kursus, transaksi keuangan, serta aktivitas platform.",
+    "Menghasilkan aplikasi web yang scalable, responsive, dan mudah dikembangkan menggunakan teknologi modern.",
+    "Berhasil membangun platform LMS siap digunakan sebagai solusi pembelajaran digital untuk institusi pendidikan maupun pelatihan.",
+  ],
+  links: [
+    {
+      url: "https://lms-afterschola.vercel.app",
+     text: "Live Website",
+    },
+  ],
+  documentation: [
+    "./assets/images/afterschola/landing.png",
+    "./assets/images/afterschola/login.png",
+    "./assets/images/afterschola/student-dashboard.png",
+    "./assets/images/afterschola/course-marketplace.png",
+    "./assets/images/afterschola/course-learning.png",
+    "./assets/images/afterschola/leaderboard.png",
+    "./assets/images/afterschola/game.png",
+    "./assets/images/afterschola/discussions.png",
+    "./assets/images/afterschola/instructor-dashboard.png",
+    "./assets/images/afterschola/course-editor.png",
+    "./assets/images/afterschola/assignment-management.png",
+    "./assets/images/afterschola/admin-dashboard.png",
+    "./assets/images/afterschola/user-management.png",
+    "./assets/images/afterschola/finance-dashboard.png",
+  ],
+},
   cleanclass: {
     title: "CleanClass - Classroom Management System",
     image: "./assets/images/project-1.jpg",
@@ -786,7 +1058,7 @@ const portfolioData = {
       "Implementasi augmentasi data untuk improve model robustness",
     ],
     outcome: [
-      "Akurasi klasifikasi 99% untuk semua jenis sampah",
+      "Akurasi klasifikasi 96% untuk semua jenis sampah",
       "Processing time <50ms per item",
       "Successful integration dengan sistem reward",
       "Dataset kontribusi 1000+ gambar sampah terklasifikasi",
@@ -1058,185 +1330,270 @@ const portfolioData = {
   },
 };
 
-// Update click handlers for portfolio items
+
+/*===========================================================
+  PROJECT ITEMS — click to open modal
+===========================================================*/
+
+const portfolioModal = document.getElementById("portfolioModal");
+const closeProjectModalBtn = document.getElementById("closeProjectModal");
+
+function openProjectModal() {
+  if (!portfolioModal) return;
+  portfolioModal.classList.add("open");
+  portfolioModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  if (closeProjectModalBtn) {
+    setTimeout(() => closeProjectModalBtn.focus(), 50);
+  }
+}
+
+function closeProjectModal() {
+  if (!portfolioModal) return;
+  portfolioModal.classList.remove("open");
+  portfolioModal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+// Close on X button
+if (closeProjectModalBtn) {
+  closeProjectModalBtn.addEventListener("click", closeProjectModal);
+}
+
+// Close on clicking the dark overlay (outside modal-content)
+if (portfolioModal) {
+  portfolioModal.addEventListener("click", function (e) {
+    if (e.target === portfolioModal) closeProjectModal();
+  });
+}
+
 document.querySelectorAll(".project-item a").forEach((item) => {
   item.addEventListener("click", function (e) {
     e.preventDefault();
+
     const projectTitle = this.querySelector(".project-title")
       .textContent.toLowerCase()
       .replace(/\s+/g, "");
     const projectData = portfolioData[projectTitle];
 
-    if (projectData) {
-      // Update modal content
-      document.getElementById("modal-title").textContent = projectData.title;
-      document.getElementById("modal-image").src = projectData.image;
-      document.getElementById("modal-description").textContent =
-        projectData.description;
-      document.getElementById("modal-role").textContent = projectData.myRole;
+    if (!projectData) return;
 
-      // Clear existing links before adding new ones
-      const linksContainer = document.getElementById("modal-links");
-      const linksSection = document.getElementById("modal-links-section");
-      linksContainer.innerHTML = "";
+    // Populate modal content
+    document.getElementById("modal-title").textContent = projectData.title;
 
-      const loginInfoContainer = document.getElementById("modal-login-info");
-      const loginInfoSection = document.getElementById(
-        "modal-login-info-section",
-      );
-      loginInfoContainer.innerHTML = "";
+    const modalImgEl = document.getElementById("modal-image");
+    modalImgEl.src = projectData.image;
+    modalImgEl.alt = projectData.title;
 
-      // Add only valid links and toggle links section visibility
-      const validLinks = Array.isArray(projectData.links)
-        ? projectData.links.filter((link) => {
-            if (!link || typeof link !== "object") return false;
+    document.getElementById("modal-description").textContent =
+      projectData.description;
+    document.getElementById("modal-role").textContent = projectData.myRole;
 
-            const url = String(link.url || "").trim();
-            const text = String(link.text || "").trim();
+    // Links
+    const linksContainer = document.getElementById("modal-links");
+    const linksSection = document.getElementById("modal-links-section");
+    linksContainer.innerHTML = "";
 
-            return url && text && url !== "#" && text !== "#";
+    const validLinks = Array.isArray(projectData.links)
+      ? projectData.links.filter((link) => {
+          if (!link || typeof link !== "object") return false;
+          const url = String(link.url || "").trim();
+          const text = String(link.text || "").trim();
+          return url && text && url !== "#" && text !== "#";
+        })
+      : [];
+
+    if (validLinks.length > 0) {
+      linksSection.style.display = "block";
+      validLinks.forEach((link) => {
+        const a = document.createElement("a");
+        a.href = link.url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.innerHTML = `<ion-icon name="${
+          link.url.includes("github") ? "logo-github" : "link-outline"
+        }"></ion-icon> ${link.text}`;
+        linksContainer.appendChild(a);
+      });
+    } else {
+      linksSection.style.display = "none";
+    }
+
+    // Login info
+    const loginInfoContainer = document.getElementById("modal-login-info");
+    const loginInfoSection = document.getElementById("modal-login-info-section");
+    loginInfoContainer.innerHTML = "";
+
+    const validLoginInfo = Array.isArray(projectData.loginInfo)
+      ? projectData.loginInfo
+          .map((item) => {
+            if (item && typeof item === "object" && !Array.isArray(item)) {
+              const label = String(item.label || "").trim();
+              const value = String(item.value || "").trim();
+              if (!label || !value || value === "#") return null;
+              return { label, value };
+            }
+            if (typeof item === "string") {
+              const raw = item.trim();
+              if (!raw || raw === "#") return null;
+              const sepIdx = raw.indexOf(":");
+              if (sepIdx === -1) return { label: "Info", value: raw };
+              return {
+                label: raw.slice(0, sepIdx).trim(),
+                value: raw.slice(sepIdx + 1).trim(),
+              };
+            }
+            return null;
           })
-        : [];
+          .filter(Boolean)
+      : [];
 
-      if (validLinks.length > 0) {
-        linksSection.style.display = "block";
+    if (validLoginInfo.length > 0) {
+      loginInfoSection.style.display = "block";
+      validLoginInfo.forEach((info) => {
+        const row = document.createElement("div");
+        row.className = "login-info-item";
+        row.innerHTML = `<span class="login-info-label">${info.label}:</span><span class="login-info-value">${info.value}</span>`;
+        loginInfoContainer.appendChild(row);
+      });
+    } else {
+      loginInfoSection.style.display = "none";
+    }
 
-        validLinks.forEach((link) => {
-          const linkElement = document.createElement("a");
-          linkElement.href = link.url;
-          linkElement.target = "_blank";
-          linkElement.rel = "noopener noreferrer";
-          linkElement.innerHTML = `
-            <ion-icon name="${
-              link.url.includes("github") ? "logo-github" : "link-outline"
-            }"></ion-icon>
-            ${link.text}
-          `;
-          linksContainer.appendChild(linkElement);
+    // Screenshots with click-to-preview
+    const screenshotsContainer = document.getElementById("modal-screenshots");
+    screenshotsContainer.innerHTML = "";
+
+    if (projectData.documentation && projectData.documentation.length > 0) {
+      projectData.documentation.forEach((imgSrc) => {
+        const img = document.createElement("img");
+        img.src = imgSrc;
+        img.alt = "Project screenshot";
+        img.loading = "lazy";
+        img.decoding = "async";
+        img.addEventListener("click", function () {
+          lastPreviewTrigger = this;
+          openImagePreview(this.src, projectData.title + " screenshot");
         });
-      } else {
-        linksSection.style.display = "none";
-      }
+        screenshotsContainer.appendChild(img);
+      });
+    }
 
-      // Add login information conditionally
-      const validLoginInfo = Array.isArray(projectData.loginInfo)
-        ? projectData.loginInfo
-            .map((item) => {
-              // Support object format: { label: "Email", value: "admin" }
-              if (item && typeof item === "object" && !Array.isArray(item)) {
-                const label = String(item.label || "").trim();
-                const value = String(item.value || "").trim();
+    // Click on main modal image -> fullscreen preview
+    modalImgEl.onclick = function () {
+      lastPreviewTrigger = modalImgEl;
+      openImagePreview(modalImgEl.src, projectData.title);
+    };
 
-                if (!label || !value || value === "#") return null;
-                return { label, value };
-              }
+    // Lists
+    document.getElementById("modal-highlights").innerHTML =
+      projectData.highlights.map((item) => `<li>${item}</li>`).join("");
+    document.getElementById("modal-challenges").innerHTML =
+      projectData.challenges.map((item) => `<li>${item}</li>`).join("");
+    document.getElementById("modal-outcomes").innerHTML = projectData.outcome
+      .map((item) => `<li>${item}</li>`)
+      .join("");
+    document.getElementById("modal-tech").innerHTML = projectData.technologies
+      .map((item) => `<li>${item}</li>`)
+      .join("");
+    document.getElementById("modal-duration").textContent =
+      projectData.duration;
 
-              // Support string format: "Email: admin"
-              if (typeof item === "string") {
-                const raw = item.trim();
-                if (!raw || raw === "#") return null;
+    // Reset scroll and show modal
+    portfolioModal.scrollTop = 0;
+    const modalContent = portfolioModal.querySelector(".modal-content");
+    if (modalContent) modalContent.scrollTop = 0;
 
-                const separatorIndex = raw.indexOf(":");
+    openProjectModal();
+  });
+});
 
-                if (separatorIndex === -1) {
-                  return {
-                    label: "Info",
-                    value: raw,
-                  };
-                }
+/*===========================================================
+  CERTIFICATE CARDS — click to preview fullscreen
+===========================================================*/
 
-                const label = raw.slice(0, separatorIndex).trim();
-                const value = raw.slice(separatorIndex + 1).trim();
+document.querySelectorAll(".certificate-card").forEach((card) => {
+  const img = card.querySelector("img");
+  const titleEl = card.querySelector(".certificate-title");
+  const dateEl = card.querySelector(".certificate-date");
 
-                if (!label || !value || value === "#") return null;
+  if (!img) return;
 
-                return {
-                  label,
-                  value,
-                };
-              }
+  const handleCertificateOpen = function () {
+    const caption = [
+      titleEl ? titleEl.textContent : "",
+      dateEl ? dateEl.textContent : "",
+    ]
+      .filter(Boolean)
+      .join(" — ");
 
-              return null;
-            })
-            .filter(Boolean)
-        : [];
+    lastPreviewTrigger = card;
+    openImagePreview(img.src, caption);
+  };
 
-      if (validLoginInfo.length > 0) {
-        loginInfoSection.style.display = "block";
+  // Mouse click
+  card.addEventListener("click", handleCertificateOpen);
 
-        validLoginInfo.forEach((item) => {
-          const row = document.createElement("div");
-          row.className = "login-info-item";
-
-          const label = document.createElement("span");
-          label.className = "login-info-label";
-          label.textContent = `${item.label}:`;
-
-          const value = document.createElement("span");
-          value.className = "login-info-value";
-          value.textContent = item.value;
-
-          row.appendChild(label);
-          row.appendChild(value);
-          loginInfoContainer.appendChild(row);
-        });
-      } else {
-        loginInfoSection.style.display = "none";
-      }
-
-      // Clear and update screenshots
-      const screenshotsContainer = document.getElementById("modal-screenshots");
-      screenshotsContainer.innerHTML = ""; // Clear existing screenshots
-
-      if (projectData.documentation && projectData.documentation.length > 0) {
-        projectData.documentation.forEach((imgSrc) => {
-          const img = document.createElement("img");
-          img.src = imgSrc;
-          img.alt = "Project documentation";
-          img.loading = "lazy";
-          screenshotsContainer.appendChild(img);
-        });
-      }
-
-      // Update lists
-      document.getElementById("modal-highlights").innerHTML =
-        projectData.highlights.map((item) => `<li>${item}</li>`).join("");
-      document.getElementById("modal-challenges").innerHTML =
-        projectData.challenges.map((item) => `<li>${item}</li>`).join("");
-      document.getElementById("modal-outcomes").innerHTML = projectData.outcome
-        .map((item) => `<li>${item}</li>`)
-        .join("");
-      document.getElementById("modal-tech").innerHTML = projectData.technologies
-        .map((item) => `<li>${item}</li>`)
-        .join("");
-      document.getElementById("modal-duration").textContent =
-        projectData.duration;
-
-      // Show modal
-      const modalElement = document.getElementById("portfolioModal");
-      const modalContent = modalElement.querySelector(".modal-content");
-      const modalBody = modalElement.querySelector(".modal-body");
-
-      modalElement.style.display = "block";
-
-      if (modalContent) modalContent.scrollTop = 0;
-      if (modalBody) modalBody.scrollTop = 0;
+  // Keyboard: Enter or Space
+  card.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handleCertificateOpen();
     }
   });
 });
 
-// Modal close handlers
-const modal = document.getElementById("portfolioModal");
-const closeBtn = document.getElementsByClassName("close-modal")[0];
+/*===========================================================
+  KEYBOARD GLOBAL — ESC to close active modal
+===========================================================*/
 
-// Close on X click
-closeBtn.onclick = function () {
-  modal.style.display = "none";
-};
+document.addEventListener("keydown", function (e) {
+  if (e.key !== "Escape") return;
 
-// Close on outside click
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (isPreviewOpen) {
+    closeImagePreview();
+    return;
   }
-};
+
+  if (portfolioModal && portfolioModal.classList.contains("open")) {
+    closeProjectModal();
+  }
+});
+
+/*===========================================================
+  LAZY IMAGE FADE-IN (IntersectionObserver)
+===========================================================*/
+
+(function initLazyImages() {
+  const lazyImages = document.querySelectorAll("img.lazy-img");
+  if (!lazyImages.length) return;
+
+  if (!("IntersectionObserver" in window)) {
+    // Fallback: show all immediately
+    lazyImages.forEach((img) => img.classList.add("loaded"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("loaded");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: "0px 0px 100px 0px", threshold: 0.01 }
+  );
+
+  lazyImages.forEach((img) => {
+    if (img.complete && img.naturalWidth > 0) {
+      img.classList.add("loaded");
+    } else {
+      observer.observe(img);
+      img.addEventListener("load", () => img.classList.add("loaded"), {
+        once: true,
+      });
+    }
+  });
+})();
