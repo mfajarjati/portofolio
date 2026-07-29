@@ -640,8 +640,8 @@ bookara: {
   ],
   links: [
     {
-      url: "https://bookara.vercel.app",
-      text: "Live Website",
+      url: "https://github.com/mfajarjati/bookara",
+      text: "GitHub",
     },
   ],
   documentation: [
