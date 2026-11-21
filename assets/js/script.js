@@ -1500,6 +1500,135 @@ bkadventure: {
       "./assets/images/harganahotelml/tabel.png",
     ],
   },
+
+analisisdashboardpenjualantokenpln: {
+  title: "Analisis Dashboard Penjualan Token PLN - Customer Behavior & Transaction Performance Analysis",
+  image: "./assets/images/pln-dashboard/slide-01-cover.jpg",
+  description:
+    "Proyek Data Analysis yang berfokus pada analisis kinerja penjualan token listrik PLN di Provinsi Jawa Barat melalui pengolahan data transaksi dan visualisasi dashboard interaktif. Proyek ini bertujuan mengidentifikasi pola perilaku pelanggan, tren konsumsi listrik, metode dan status pembayaran, kontribusi kategori layanan, serta persebaran pendapatan berdasarkan wilayah. Proses analisis mencakup pengumpulan dan pembersihan data, penyusunan Key Performance Indicators (KPI), hingga visualisasi data menggunakan Google Looker Studio. Hasil analisis digunakan untuk mengidentifikasi peluang peningkatan kepatuhan pembayaran, optimalisasi segmen pelanggan, dan pengembangan strategi penjualan berdasarkan karakteristik setiap wilayah di Jawa Barat.",
+  technologies: [
+    "Google Looker Studio",
+    "Data Analysis",
+    "Data Cleaning",
+    "Data Visualization",
+    "Business Intelligence",
+  ],
+  highlights: [
+    "Menganalisis data transaksi penjualan token PLN dengan fokus pada wilayah Provinsi Jawa Barat untuk memahami kinerja penjualan dan karakteristik pelanggan.",
+    "Menggunakan empat tabel utama yang terdiri dari Data Transaksi sebagai fact table serta Dimensi Pelanggan, Dimensi Area, dan Dimensi Layanan sebagai dimension table.",
+    "Melakukan pemeriksaan dan pembersihan data untuk memastikan konsistensi format, kualitas nilai, serta kesiapan data sebelum digunakan dalam proses analisis.",
+    "Mengembangkan dashboard interaktif menggunakan Google Looker Studio untuk memantau indikator utama dan mengeksplorasi kinerja penjualan berdasarkan area serta periode transaksi.",
+    "Menyusun rekomendasi strategis berbasis data untuk meningkatkan kepatuhan pembayaran, memperkuat engagement pelanggan non-Rumah Tangga, dan mengoptimalkan potensi pendapatan setiap wilayah."
+  ],
+  myRole: "Data Analyst",
+  challenges: [
+    "Mengolah data transaksi dan beberapa tabel dimensi menjadi struktur data yang terintegrasi serta siap digunakan untuk analisis.",
+    "Memastikan kualitas dan konsistensi data agar metrik yang dihasilkan dapat merepresentasikan kondisi kinerja penjualan secara akurat.",
+    "Menyajikan informasi transaksi yang kompleks melalui visualisasi dashboard yang interaktif, informatif, dan mudah dipahami.",
+    "Mengubah hasil analisis dan visualisasi menjadi insight serta rekomendasi strategis yang dapat mendukung pengambilan keputusan."
+  ],
+  outcome: [
+    "Berhasil membangun dashboard interaktif penjualan token PLN menggunakan Google Looker Studio dengan fokus analisis Provinsi Jawa Barat.",
+    "Menghasilkan analisis kinerja penjualan dengan total pendapatan sebesar Rp627,33 juta dan daya tersalurkan mencapai 570,7 ribu KWh.",
+    "Mengidentifikasi sekitar 2,6 ribu pelanggan dalam data analisis serta menemukan 317 transaksi yang masih berstatus tunggakan.",
+    "Menemukan bahwa PLN Mobile merupakan metode pembayaran dominan dengan kontribusi sebesar 65,4% transaksi.",
+    "Mengidentifikasi bahwa 87,8% transaksi berstatus lunas dan 12,2% transaksi masih tercatat sebagai tunggakan.",
+    "Menemukan dominasi kategori layanan Rumah Tangga dengan kontribusi sebesar 80,5% terhadap penggunaan layanan.",
+    "Mengidentifikasi Depok sebagai area dengan kontribusi pendapatan tertinggi, diikuti Cirebon, Bandung, Cimahi, dan Bekasi.",
+    "Menghasilkan tiga rekomendasi strategis, yaitu optimalisasi pengingat pembayaran, penguatan engagement pelanggan non-Rumah Tangga, dan strategi peningkatan kontribusi pendapatan berdasarkan karakteristik wilayah.",
+    "Menyelesaikan proyek analisis dashboard sebagai bagian dari program sertifikasi BNSP Data Analysis dan berhasil lulus sertifikasi."
+  ],
+  links: [
+    {
+      url: "https://datastudio.google.com/reporting/72566424-77e4-4841-9b3a-10ee0593de81",
+      text: "Interactive Dashboard",
+    },
+  ],
+  documentation: [
+    "./assets/images/pln-dashboard/slide-02-background.jpg",
+    "./assets/images/pln-dashboard/slide-03-methodology.jpg",
+    "./assets/images/pln-dashboard/slide-04-performance-overview.jpg",
+    "./assets/images/pln-dashboard/slide-05-payment-analysis.jpg",
+    "./assets/images/pln-dashboard/slide-06-service-category-analysis.jpg",
+    "./assets/images/pln-dashboard/slide-07-regional-revenue-analysis.jpg",
+    "./assets/images/pln-dashboard/slide-08-strategic-recommendations.jpg",
+    "./assets/images/pln-dashboard/slide-09-conclusion.jpg",
+    "./assets/images/pln-dashboard/slide-10-thank-you.jpg",
+  ],
+},
+
+gayanarafashion: {
+  title: "Gayanara Fashion - Data Documentation & Business Insight",
+  image: "./assets/images/gayanara-fashion/slide-01-cover.jpg",
+  description:
+    "Proyek Data Analysis yang berfokus pada evaluasi kinerja penjualan bisnis fashion online Gayanara Fashion melalui pengolahan data transaksi, pelanggan, produk, dan ulasan pelanggan. Proyek ini bertujuan mengidentifikasi penyebab kehilangan pendapatan (Revenue Loss), mengevaluasi kontribusi produk terhadap kerugian penjualan, menganalisis performa penjualan berdasarkan lokasi geografis, serta memahami karakteristik dan kepuasan pelanggan. Proses analisis mencakup data profiling, data cleaning, validasi kualitas data, penyusunan relasi antar-dataset, analytical modelling, hingga pengembangan dashboard interaktif menggunakan Google Looker Studio. Hasil analisis diterjemahkan menjadi business insight dan rekomendasi strategis untuk membantu Sales Manager mengevaluasi kinerja penjualan, mengurangi revenue loss, serta mendukung pengambilan keputusan bisnis berbasis data.",
+  technologies: [
+    "Google Looker Studio",
+    "Data Analysis",
+    "Data Cleaning",
+    "Data Documentation",
+    "Data Modeling",
+    "Data Visualization",
+    "Business Intelligence",
+    "Business Insight",
+  ],
+  highlights: [
+    "Melakukan analisis kinerja penjualan bisnis online Gayanara Fashion menggunakan lima dataset utama, yaitu Customers, Order Items, Orders, Products, dan Reviews.",
+    "Mengembangkan analytical modelling dengan menyusun calculated metrics untuk mengukur Revenue, Revenue Loss, Revenue Loss Rate, Total Orders, dan Average Rating.",
+    "Membangun dashboard interaktif menggunakan Google Looker Studio yang terdiri dari Executive Summary, Product Performance & Revenue Loss, Location Performance, Customer & Review Insights, serta Business Insight.",
+    "Menganalisis karakteristik demografis pelanggan serta customer reviews untuk memperoleh insight mengenai segmentasi pelanggan dan tingkat kepuasan.",
+    "Menyusun rekomendasi bisnis berbasis data untuk mengurangi revenue loss, mengevaluasi produk dan lokasi, serta memanfaatkan customer feedback dalam pengambilan keputusan."
+  ],
+  myRole: "Data Analyst",
+  challenges: [
+    "Mengintegrasikan lima dataset yang memiliki struktur dan tingkat granularitas berbeda ke dalam model data yang saling terhubung untuk mendukung analisis transaksi, produk, pelanggan, dan ulasan.",
+    "Menganalisis hubungan antara performa produk, lokasi geografis, dan karakteristik pelanggan tanpa menjadikan satu indikator sebagai satu-satunya dasar pengambilan keputusan.",
+    "Menyajikan berbagai indikator kinerja bisnis dan hasil analisis multidimensional melalui dashboard interaktif yang informatif serta mudah dipahami oleh Sales Manager.",
+    "Mengubah hasil pengolahan data menjadi business insight dan rekomendasi strategis yang relevan untuk mendukung evaluasi serta optimalisasi penjualan."
+  ],
+  outcome: [
+    "Berhasil menyusun dokumentasi dan mengintegrasikan lima dataset utama Gayanara Fashion, yaitu Customers, Order Items, Orders, Products, dan Reviews.",
+    "Menghasilkan dashboard interaktif menggunakan Google Looker Studio untuk mengevaluasi kinerja penjualan selama periode 1–31 Januari 2023.",
+    "Mengidentifikasi total revenue sebesar Rp52,55 juta dari 87 order dengan rata-rata nilai transaksi sebesar Rp604,03 ribu per order.",
+    "Menemukan Revenue Loss sebesar Rp6,742 juta atau sekitar 12,8% dari total revenue pada periode analisis.",
+    "Mengidentifikasi returned orders sebagai penyumbang 57,2% Revenue Loss atau sekitar Rp3,856 juta, sedangkan cancelled orders menyumbang 42,8% atau sekitar Rp2,886 juta.",
+    "Menemukan Jacket Denim Tropika Style sebagai produk dengan Revenue Loss tertinggi sebesar Rp5,424 juta, diikuti Dress Wrap Pesona Indo sebesar Rp4,193 juta dan Dress Mini Casual SandangIndo sebesar Rp4,141 juta.",
+    "Mengidentifikasi Banjarmasin sebagai kota dengan Revenue Loss tertinggi sekitar Rp2,78 juta, diikuti Tangerang sekitar Rp1,5 juta.",
+    "Menemukan bahwa pelanggan laki-laki berjumlah 25 orang, sedangkan pelanggan perempuan berjumlah 16 orang dalam data demografis yang dianalisis."
+  ],
+  links: [
+    {
+      url: "https://datastudio.google.com/reporting/fd73ff5f-3f38-466d-810b-2494cbc444e2",
+      text: "Interactive Dashboard",
+    },
+  ],
+  documentation: [
+    "./assets/images/gayanara-fashion/slide-02-business-context.jpg",
+    "./assets/images/gayanara-fashion/slide-03-business-questions.jpg",
+    "./assets/images/gayanara-fashion/slide-04-dataset-customers-orders.jpg",
+    "./assets/images/gayanara-fashion/slide-05-dataset-products-reviews.jpg",
+    "./assets/images/gayanara-fashion/slide-06-key-relationships.jpg",
+    "./assets/images/gayanara-fashion/slide-07-data-cleaning-process.jpg",
+    "./assets/images/gayanara-fashion/slide-08-data-cleaning-validation.jpg",
+    "./assets/images/gayanara-fashion/slide-09-data-preparation-modelling.jpg",
+    "./assets/images/gayanara-fashion/slide-10-dashboard-home.jpg",
+    "./assets/images/gayanara-fashion/slide-11-executive-summary.jpg",
+    "./assets/images/gayanara-fashion/slide-12-revenue-loss-analysis.jpg",
+    "./assets/images/gayanara-fashion/slide-13-dashboard-product-analysis.jpg",
+    "./assets/images/gayanara-fashion/slide-14-product-performance.jpg",
+    "./assets/images/gayanara-fashion/slide-15-dashboard-location-analysis.jpg",
+    "./assets/images/gayanara-fashion/slide-16-location-performance.jpg",
+    "./assets/images/gayanara-fashion/slide-17-dashboard-customer-review.jpg",
+    "./assets/images/gayanara-fashion/slide-18-customer-demographics.jpg",
+    "./assets/images/gayanara-fashion/slide-19-customer-review-insights.jpg",
+    "./assets/images/gayanara-fashion/slide-20-dashboard-about.jpg",
+    "./assets/images/gayanara-fashion/slide-21-business-recommendations.jpg",
+    "./assets/images/gayanara-fashion/slide-22-strategic-actions.jpg",
+    "./assets/images/gayanara-fashion/slide-23-conclusion.jpg",
+    "./assets/images/gayanara-fashion/slide-24-dashboard-link.jpg",
+  ],
+},
+
 };
 
 
